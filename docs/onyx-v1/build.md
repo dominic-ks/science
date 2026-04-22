@@ -159,6 +159,87 @@ Getting the seals right proved difficult throughout, and they remained a point o
 
 ---
 
+# Electronics
+
+## Overview
+
+The electronics assembly consists of three core components mounted on a custom-built LEGO frame, with a phone power bank providing power via USB:
+
+| Component | Role |
+|-----------|------|
+| Raspberry Pi Pico | Microcontroller — all logic and motor control |
+| HC-05 Bluetooth module (ZS-040) | Wireless communication, paired with Android phone via SerialConnector app |
+| DRV8833 dual H-bridge motor driver | Drives up to 2 DC motors at up to 1.5A per channel |
+
+All components were fitted with pin headers and sockets so that every module can be removed and reused independently without desoldering. This worked well in practice.
+
+---
+
+## Photo
+
+![Electronics assembly — Pico, Bluetooth module and motor driver](images/20260422_121049.jpg)
+*Electronics mounted inside the LEGO chassis. Left: Raspberry Pi Pico. Right (top): HC-05 Bluetooth module (ZS-040). Right (bottom): DRV8833 motor driver. A phone power bank is visible below, connected via USB.*
+
+---
+
+## Issues
+
+### Manual PCB — Functional but Messy
+
+A custom PCB was hand-soldered to connect the components. While it worked, the process was fiddly and the result was untidy. Reliability concerns remain around borderline solder joints, and any rework would be difficult.
+
+### Bluetooth Does Not Work Underwater
+
+Bluetooth signals do not penetrate water. As soon as the submarine submerged, the Bluetooth connection was immediately lost, rendering real-time remote control non-functional for the duration of a dive.
+
+**Workaround applied:** The control logic was modified to operate autonomously — on command, the sub would dive, hold for 10 seconds, then resurface. This avoided the need for an active connection during submersion but significantly limited operational capability.
+
+> **Scope note:** This constraint also shaped the effective scope of V1. Rather than a fully RC-controlled submarine, V1 became a platform for testing controlled submersion and resurfacing only. Full real-time RC control underwater requires a fundamentally different communication technology. See the [Project Overview](./README.md) for more on how this shaped V1's objectives.
+
+### Motor Driver — Insufficient Channel Count
+
+The DRV8833 provides 2 independent motor channels. Three were required:
+
+| Motor axis | Role |
+|------------|------|
+| Ballast actuator | Drives the syringe piston to control buoyancy |
+| Fore/aft thruster | Longitudinal propulsion |
+| Lateral thruster | Transverse (side-to-side) propulsion |
+
+Only two of the three axes could be driven at once with the hardware fitted, limiting manoeuvring capability.
+
+### Battery — Not Fit for Purpose
+
+The mobile phone power bank was available and convenient but is not appropriate for this application:
+
+- Power banks automatically cut output at low current draw (interpreting it as the device being fully charged), causing unexpected resets during low-power operation.
+- Capacity, discharge rate, and voltage regulation are optimised for phone charging, not motor drive loads.
+- No power budget was established before the build, so actual requirements were unknown.
+
+Battery selection needs to be properly revisited for V2.
+
+### Motor Capability — Unknown
+
+No datasheet was available for the Gebildet DC geared motors. Stall current, no-load current, torque, and rated speed were all unknown going into the build. As a result:
+
+- PWM duty cycles and drive parameters were effectively guesses.
+- The motors may have been running well outside their optimal operating range.
+- Power draw and efficiency are uncharacterised; the risk of motor or driver damage from over-driving is non-trivial.
+
+---
+
+## Next Build — Electronics Improvements
+
+- [ ] **PCB design:** Replace the hand-soldered PCB with a properly designed board. Use a PCB design tool (e.g. KiCad) to plan the layout before committing. At minimum, use well-laid-out stripboard with a clear schematic.
+- [ ] **Communication technology:** Replace Bluetooth with an underwater-capable alternative. Acoustic communication is the established method for underwater vehicles; for short-range, shallow-water use, a wired tether is the simplest reliable interim option.
+- [ ] **Motor driver channel count:** Use a driver combination supporting at least 3 independent channels (e.g. two DRV8833 modules, or a single board with 3+ channels).
+- [ ] **Power budget:** Before selecting a battery, measure current draw of all motors under representative load using a bench supply and multimeter. Sum the draw, add margin, and use this to specify battery capacity and continuous discharge rating.
+- [ ] **Battery selection:** Based on the power budget, select an appropriate LiPo or similar battery. Confirm it can deliver sufficient peak current without triggering a low-current cutoff. Add a low-voltage alarm or cutoff to protect the pack.
+- [ ] **Motor characterisation:** Source datasheets or, if unavailable, characterise the motors on the bench — measure no-load current, stall current, and approximate torque at operating voltage. Use this to set appropriate drive parameters and confirm the motor driver stays within its rated limits.
+- [ ] **Wiring tidiness:** Document and label all connections. Use consistent wire colours and lengths. Ensure all connectors are mechanically retained and will not vibrate loose during operation.
+
+---
+
 # Annex / Notes
 
 ---

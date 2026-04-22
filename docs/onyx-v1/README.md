@@ -29,6 +29,8 @@ This project was inspired by the [Brick Experiment Channel RC Submarine 4.0](htt
 
 **V1 is at end-of-life.** It achieved a functional milestone but did not reach stable, repeatable operation.
 
+> **Scope note:** The original aim was to build a fully RC-controlled submarine in a single version. In practice, the discovery that Bluetooth does not work underwater meant V1's effective scope narrowed considerably — it became a platform for testing controlled submersion and resurfacing only, rather than real-time remote operation. This is a meaningful outcome, but it is not a complete submarine. V2 will address the communication problem as a hard prerequisite.
+
 ### What Works
 - Basic electronics (ESP32-C3, IR TX/RX)
 - Power system (LiPo battery)
