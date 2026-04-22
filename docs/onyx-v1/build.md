@@ -18,6 +18,7 @@
 **Hull:**
 - Clear extruded acrylic plastic perspex tube (250mm length, 110mm OD / 104mm ID)
 - Lids cut from smaller diameter acrylic tube and 3mm clear acrylic perspex sheet (300mm x 300mm, polished edges)
+- Pair of small magnets attached to one lid for the propeller system
 
 **Ballast:**
 - 2kg lead shot pouch (vintage, in IKEA sandwich bag)
@@ -31,6 +32,7 @@
 
 **Seals:**
 - Solid nitrile rubber O-ring cord, 2mm cross section (3x)
+- Loctite 206 adhesive for bonding O-ring cord ends
 
 **General Assembly:**
 - Various LEGO pieces (spec to be provided)
@@ -87,6 +89,26 @@ The hull consists of a clear cylindrical tube and two custom-fabricated lids. Th
 
 ![Lids with seals](images/20260421_221459.jpg)
 *Both lids fitted with O-ring seals, ready to be inserted into the tube for a watertight fit.*
+
+---
+
+## Waterproofing Approach
+
+### V1 Method
+
+- Primary seal: [TBC — original approach]
+- Secondary: [TBC]
+- Known weaknesses: seal reliability unconfirmed under pressure
+
+### Updates During V1
+
+- Nitrile glue ordered as replacement/improvement
+- [Note any cable entry points and how they were sealed]
+
+### What Was Not Done
+
+- No pressure testing at depth
+- No validated seal protocol
 
 ---
 
@@ -154,40 +176,3 @@ Getting the seals right proved difficult throughout, and they remained a point o
 - **Issue:** If the unit was drawing very little current (e.g., idle or only Pico running), the power bank would automatically switch off, likely assuming the "phone" was fully charged. This caused unexpected shutdowns during low-power operation.
 - No additional low-voltage cutoff or protection circuitry was used.
 - Power draw from motors vs. electronics was not profiled; runtime not measured.
-
----
-
-## Waterproofing Approach
-
-### V1 Method
-
-- Primary seal: [TBC — original approach]
-- Secondary: [TBC]
-- Known weaknesses: seal reliability unconfirmed under pressure
-
-### Updates During V1
-
-- Nitrile glue ordered as replacement/improvement
-- [Note any cable entry points and how they were sealed]
-
-### What Was Not Done
-
-- No pressure testing at depth
-- No validated seal protocol
-
----
-
-## Assembly Notes
-
-- [Step-by-step or key notes on how the unit was assembled]
-- [Any gotchas — fragile parts, sequence dependencies, clearance issues]
-- [Note if any component required modification to fit]
-
----
-
-## Known Design Constraints for V2
-
-- Must allow adjustable ballast installation
-- Internal layout needs to be re-planned around orientation requirement
-- Sealing must be tested systematically before water exposure
-- Battery sizing needs to be revisited against measured power draw
