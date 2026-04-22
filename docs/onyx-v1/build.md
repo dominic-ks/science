@@ -159,6 +159,10 @@ Getting the seals right proved difficult throughout, and they remained a point o
 
 ---
 
+# Annex / Notes
+
+---
+
 ## Power System
 
 | Parameter | Value |
