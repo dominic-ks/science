@@ -1,40 +1,47 @@
-# Onyx
+# Scientific Experiments
 
-Onyx is a small remote-controlled submarine project.
+This repository records my scientific, engineering, and practical experiments.
 
-The project is an iterative engineering build: each version is used to prove what works, expose what does not, and define the next version more clearly.
-
-It is not a polished product. The current documentation records the learning process as much as the finished hardware.
+The purpose is not just to store finished results. Each project should preserve the reasoning trail: what was tried, what was measured, what failed, what worked, and what question should be answered next.
 
 ---
 
-## Inspiration
+## Projects
 
-This project was inspired by the [Brick Experiment Channel RC Submarine 4.0](https://brickexperimentchannel.wordpress.com/2022/07/01/rc-submarine-4-0-hull-3-10/). The goal is to build a similar vessel using familiar technology and, where practical, parts and materials already on hand.
-
----
-
-## Versions
-
-| Version | Status | Notes |
+| Project | Status | Notes |
 |---------|--------|-------|
-| [Onyx V1](./docs/onyx-v1/README.md) | Measurement / planning | Exploratory build used to identify constraints and continue controlled buoyancy measurement before V2 |
+| [Onyx](./projects/onyx/README.md) | Active measurement / planning | Small remote-controlled submarine project, currently using V1 to answer buoyancy and ballast questions before V2 |
+| [Disposable dehumidifiers](./projects/disposable-dehumidifiers/README.md) | Planned | Moisture-absorption experiment to be added |
 
 ---
 
-## Current Direction
+## Shared Documentation
 
-V1 showed that the main problems are physical rather than software-first:
+| File | Purpose |
+|------|---------|
+| [approach.md](./approach.md) | General working process for all projects |
+| [scientific-documentation-standard.md](./scientific-documentation-standard.md) | Reusable documentation structure for projects, phases, builds, and tests |
 
-- Waterproofing and seal validation.
-- Buoyancy and trim.
-- Ballast control.
-- Underwater communication.
-- Internal packaging and maintainability.
+---
 
-V2 planning is captured in the V1 documentation because it comes directly from the V1 build and test results:
+## Repository Structure
 
-- [V1 build record](./docs/onyx-v1/build.md)
-- [Submersion testing record](./docs/onyx-v1/tests.md)
-- [V2 forward plan](./docs/onyx-v1/v2-plan.md)
-- [V2 project approach](./docs/onyx-v1/approach.md)
+```text
+README.md
+approach.md
+scientific-documentation-standard.md
+projects/
+  onyx/
+    README.md
+    onyx-v1/
+      README.md
+      build.md
+      tests.md
+      v2-plan.md
+      approach.md
+      images/
+  disposable-dehumidifiers/
+    README.md
+```
+
+Project directories contain their own overview and version/phase documentation. Root-level documents define the common process and documentation standard.

@@ -1,6 +1,6 @@
 # Onyx V1
 
-This directory records the first Onyx build. For the overall project context and inspiration, see the [main project README](../../README.md).
+This directory records the first Onyx build. For the overall project context and inspiration, see the [Onyx project README](../README.md).
 
 ## What Was V1?
 
