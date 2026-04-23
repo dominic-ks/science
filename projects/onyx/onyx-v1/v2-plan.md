@@ -13,7 +13,7 @@ These are not optional. V2 cannot succeed without addressing these.
 | # | Issue | Source |
 |---|-------|--------|
 | 1 | Waterproofing reliability | [build.md](./build.md), [tests.md](./tests.md) |
-| 2 | Underwater communication method must be chosen before control design | [build.md](./build.md), [tests.md](./tests.md) |
+| 2 | Underwater communication method must be chosen before live submerged control design | [build.md](./build.md), [tests.md](./tests.md) |
 | 3 | Buoyancy and balance must be stable before propulsion testing | [build.md](./build.md), [tests.md](./tests.md) |
 | 4 | Ballast system must be measured and validated | [build.md](./build.md), [tests.md](./tests.md) |
 | 5 | Seal validation protocol needed before electronics go in | [tests.md](./tests.md), [approach.md](./approach.md) |
@@ -34,7 +34,7 @@ Things that would significantly improve V2 but aren't hard blockers:
 | Sealing | Redundant seal method | Glue + O-ring or gasket |
 | Assembly | Document assembly sequence | Prevent rework loops |
 | Testing | Run subsystem tests before integration | Bench → dry seal → wet seal → water |
-| Communication | Replace Bluetooth for underwater operation | Tether or acoustic method before real-time RC scope |
+| Communication | Replace Bluetooth only if live submerged control is required | Investigate low-frequency radio, tether, or acoustic methods before committing to real-time RC scope |
 
 ---
 
@@ -51,7 +51,7 @@ These need structured test entries in [tests.md](./tests.md) when executed:
 | Ballast range test | How much volume change is needed to submerge? |
 | Power draw measurement | Real runtime under load |
 | Stability test (ballast installed) | Can it hold a stable depth? |
-| Underwater communication test | Does the chosen communication method work at operating depth and range? |
+| Underwater communication test | If V2 requires live submerged control, does the chosen communication method work at operating depth and range? |
 | Orientation test | Confirm upside-down mount works mechanically |
 
 ---
@@ -60,7 +60,8 @@ These need structured test entries in [tests.md](./tests.md) when executed:
 
 Things V2 will need to answer that V1 didn't:
 
-- [ ] What communication method will support the intended underwater control range?
+- [ ] Does V2 require live submerged control, or is surface-commanded autonomous operation sufficient for the next test stage?
+- [ ] If live control is required, what communication method will support the intended underwater control range?
 - [ ] What is the minimum ballast volume change needed for meaningful depth control?
 - [ ] What ballast mass is required for the V1 hull alone to reach neutral buoyancy?
 - [ ] How much does the chassis-installed mass and centre of mass change the ballast requirement?
@@ -94,6 +95,7 @@ Low-priority items to consider for V2 or beyond:
 - [ ] Active depth hold (PID control with pressure sensor)
 - [ ] Camera integration
 - [ ] Wired tether as interim control method
+- [ ] Low-frequency radio communication research for untethered short-range control
 - [ ] Acoustic communication research for untethered control
 - [ ] 3D-printed custom enclosure
 - [ ] External ballast weight system (removable lead/tungsten)

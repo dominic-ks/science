@@ -304,13 +304,15 @@ All components were fitted with pin headers and sockets so that every module can
 
 A custom PCB was hand-soldered to connect the components. While it worked, the process was fiddly and the result was untidy. Reliability concerns remain around borderline solder joints, and any rework would be difficult.
 
-### Bluetooth Does Not Work Underwater
+### Bluetooth Is Not Suitable for Live Submerged Control
 
-Bluetooth signals do not penetrate water. As soon as the submarine submerged, the Bluetooth connection was immediately lost, rendering real-time remote control non-functional for the duration of a dive.
+The HC-05 Bluetooth link was useful for bench testing, surface commands, and RC control in air, but it was not suitable for real-time control once the submarine was submerged. As soon as the submarine submerged, the Bluetooth connection was immediately lost, so live remote control was unavailable for the duration of a dive.
 
-**Workaround applied:** The control logic was modified to operate autonomously — on command, the sub would dive, hold for 10 seconds, then resurface. This avoided the need for an active connection during submersion but significantly limited operational capability.
+Bluetooth was still a net advantage for V1 because it allowed a smartphone to act as the controller. That kept the control hardware simple and let the build focus on the vehicle rather than on a separate transmitter. Replacing Bluetooth with an underwater-capable radio link will also mean building or adapting a dedicated controller, not just swapping the receiver inside the submarine.
 
-> **Scope note:** This constraint also shaped the effective scope of V1. Rather than a fully RC-controlled submarine, V1 became a platform for testing controlled submersion and resurfacing only. Full real-time RC control underwater requires a fundamentally different communication technology. See the [Project Overview](./README.md) for more on how this shaped V1's objectives.
+**Workaround applied:** The control logic was modified to operate autonomously. On command, the sub would dive, hold for 10 seconds, then resurface. This avoided the need for an active connection during submersion and was sufficient for V1's submersion experiments.
+
+
 
 ### Motor Driver — Insufficient Channel Count
 
@@ -347,7 +349,7 @@ No datasheet was available for the Gebildet DC geared motors. Stall current, no-
 ## Next Build — Electronics Improvements
 
 - [ ] **PCB design:** Replace the hand-soldered PCB with a properly designed board. Use a PCB design tool (e.g. KiCad) to plan the layout before committing. At minimum, use well-laid-out stripboard with a clear schematic.
-- [ ] **Communication technology:** Replace Bluetooth with an underwater-capable alternative. Acoustic communication is the established method for underwater vehicles; for short-range, shallow-water use, a wired tether is the simplest reliable interim option.
+- [ ] **Communication technology:** If live submerged control is required, replace Bluetooth with an underwater-capable alternative. Options to investigate include an appropriate low-frequency radio approach, a wired tether for short-range testing, or acoustic communication for a more conventional underwater-vehicle path.
 - [ ] **Motor driver channel count:** Use a driver combination supporting at least 3 independent channels (e.g. two DRV8833 modules, or a single board with 3+ channels).
 - [ ] **Power budget:** Before selecting a battery, measure current draw of all motors under representative load using a bench supply and multimeter. Sum the draw, add margin, and use this to specify battery capacity and continuous discharge rating.
 - [ ] **Battery selection:** Based on the power budget, select an appropriate LiPo or similar battery. Confirm it can deliver sufficient peak current without triggering a low-current cutoff. Add a low-voltage alarm or cutoff to protect the pack.

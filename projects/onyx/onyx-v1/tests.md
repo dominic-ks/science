@@ -12,13 +12,14 @@ The V1 submersion tests confirmed that the submarine could be assembled, sealed,
 
 The main outcomes were:
 
-- Bluetooth control is not viable underwater; the connection is lost as soon as the unit submerges.
+- Bluetooth control is not viable for live submerged RC with the V1 hardware; the connection is lost as soon as the unit submerges.
+- This did not invalidate the V1 submersion tests because the firmware could command an autonomous dive, wait 10 seconds, and resurface without maintaining a link.
 - The hull seal is not reliable enough for electronics-first testing.
 - The Schrader valve did not seal gas properly during syringe operation.
 - The syringe ballast mechanism itself was mechanically promising.
 - Ballast distribution and internal layout produced poor balance.
 
-V1 should therefore not be used for further RC-control development. It can still be used as a controlled physical measurement platform before V2, especially for buoyancy, density, ballast, centre-of-mass, and syringe-actuation questions.
+V1 should therefore not be used for further live RC-control development in its current hardware configuration. It can still be used as a controlled physical measurement platform before V2, especially for buoyancy, density, ballast, centre-of-mass, and syringe-actuation questions.
 
 ---
 
@@ -114,7 +115,7 @@ Observed buoyancy broadly matches the calculated ballast requirement, and the hu
 
 **Out of Scope:**
 - Propulsion testing.
-- Bluetooth or underwater communication testing.
+- Live-control communication testing.
 - Syringe actuation.
 - Powered electronics testing.
 
@@ -152,7 +153,7 @@ The vessel can be trimmed predictably, and any remaining ballast or syringe shor
 
 **Out of Scope:**
 - Propulsion testing.
-- Bluetooth or underwater communication testing.
+- Live-control communication testing.
 - Real-time RC control.
 
 **Decision to Make After Test:**
