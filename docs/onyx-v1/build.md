@@ -132,6 +132,8 @@ However, the valve was not properly sealed. While it did not appear to let water
 
 The hole in the same lid for the syringe tube performed surprisingly well, remaining sealed simply by the presence of the tube inserted through it. No additional sealing was needed.
 
+For hull-only buoyancy testing, this hole becomes an open penetration because the syringe and tube are removed. It must be temporarily blocked before submersion so the test measures hull buoyancy rather than water ingress through the unused tube path. The blocking method should be recorded in the test entry.
+
 ### O-Ring Seals — Ongoing Point of Failure
 
 Getting the seals right proved difficult throughout, and they remained a point of failure during testing, allowing water ingress. Key issues:

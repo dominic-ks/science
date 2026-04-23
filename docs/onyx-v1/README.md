@@ -22,9 +22,11 @@ V1 was an exploratory build to prove out the core concept and identify the real 
 
 ## Final Status
 
-**V1 is at end-of-life.** It achieved a functional milestone but did not reach stable, repeatable operation.
+**V1 is no longer suitable for full RC development.** It achieved a functional milestone but did not reach stable, repeatable operation.
 
 > **Scope note:** The original aim was to build a fully RC-controlled submarine in a single version. In practice, the discovery that Bluetooth does not work underwater, lack of enough motor drivers on the circuit, and various other design issues meant V1's effective scope narrowed considerably — it became a platform for testing controlled submersion and resurfacing only, rather than real-time remote operation. This is a meaningful outcome, but it is not a complete submarine. V2 will look to address as many issues as possible, as well as implement a more robust development process.
+
+Although V1 should not be developed further as an RC vehicle, it remains useful as a physical measurement platform. In particular, the existing hull can still answer important questions about displacement, required ballast, centre of mass, ballast distribution, and whether the syringe actuator produces a measurable submerge/resurface effect.
 
 ### What Works
 - Basic electronics (Pi Pico, HC-05 Bluetooth, motor driver)

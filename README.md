@@ -18,7 +18,7 @@ This project was inspired by the [Brick Experiment Channel RC Submarine 4.0](htt
 
 | Version | Status | Notes |
 |---------|--------|-------|
-| [Onyx V1](./docs/onyx-v1/README.md) | Complete / retired | Exploratory build used to identify the main physical, electrical, and testing constraints |
+| [Onyx V1](./docs/onyx-v1/README.md) | Measurement / planning | Exploratory build used to identify constraints and continue controlled buoyancy measurement before V2 |
 
 ---
 

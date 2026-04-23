@@ -2,6 +2,8 @@
 
 > Derived from the V1 build record, submersion testing, and unresolved problems. This is a living document — update it as planning progresses.
 
+The next useful V1 work is a two-stage buoyancy validation recorded in [tests.md](./tests.md): T3 validates the hull-only ballast calculation, and T4 repeats the assessment with the chassis and electronics installed. These tests should feed directly into V2 ballast volume, ballast placement, chassis clearance, and centre-of-mass decisions.
+
 ---
 
 ## Must-Fix (Blockers for V2)
@@ -43,6 +45,8 @@ These need structured test entries in [tests.md](./tests.md) when executed:
 | Experiment | Goal |
 |------------|------|
 | Seal pressure test (empty enclosure) | Validate seal holds before electronics go in |
+| V1 hull-only ballast validation | Validate displacement and required ballast before chassis effects are added |
+| V1 chassis-installed buoyancy reassessment | Measure dry mass, syringe-water mass, trim, and practical ballast placement with the V1 chassis installed |
 | Buoyancy profile (no ballast) | Understand baseline before adding ballast |
 | Ballast range test | How much volume change is needed to submerge? |
 | Power draw measurement | Real runtime under load |
@@ -58,6 +62,9 @@ Things V2 will need to answer that V1 didn't:
 
 - [ ] What communication method will support the intended underwater control range?
 - [ ] What is the minimum ballast volume change needed for meaningful depth control?
+- [ ] What ballast mass is required for the V1 hull alone to reach neutral buoyancy?
+- [ ] How much does the chassis-installed mass and centre of mass change the ballast requirement?
+- [ ] How much water does the syringe actually bring onboard during a wet test?
 - [ ] What is the actual power draw under full operation?
 - [ ] Can the unit achieve neutral buoyancy with current weight budget?
 - [ ] What seal method reliably holds at [target depth]?
