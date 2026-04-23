@@ -11,7 +11,7 @@ The purpose is not just to store finished results. Each project should preserve 
 | Project | Status | Notes |
 |---------|--------|-------|
 | [Onyx](./projects/onyx/README.md) | Active measurement / planning | Small remote-controlled submarine project, currently using V1 to answer buoyancy and ballast questions before V2 |
-| [Disposable dehumidifiers](./projects/disposable-dehumidifiers/README.md) | Planned | Moisture-absorption experiment to be added |
+| [Disposable dehumidifiers](./projects/disposable-dehumidifiers/README.md) | Planning / baseline setup | Household condensation monitoring study using a Pi Zero, DHT22, and weather data |
 
 ---
 
