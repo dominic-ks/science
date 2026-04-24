@@ -12,6 +12,7 @@ The purpose is not just to store finished results. Each project should preserve 
 |---------|--------|-------|
 | [Onyx](./projects/onyx/README.md) | Active measurement / planning | Small remote-controlled submarine project, currently using V1 to answer buoyancy and ballast questions before V2 |
 | [Disposable dehumidifiers](./projects/disposable-dehumidifiers/README.md) | Planning / baseline setup | Household condensation monitoring study using a Pi Zero, DHT22, and weather data |
+| [Air Portsmouth](./projects/air-portsmouth/README.md) | Exploratory hardware / documentation | Low-cost, exploratory air quality monitoring project combining public AQ data with locally-built sensors to fill spatial gaps |
 
 ---
 
@@ -42,6 +43,14 @@ projects/
       images/
   disposable-dehumidifiers/
     README.md
+  air-portsmouth/
+    README.md
+    aq-v1/
+      README.md
+      build.md
+      tests.md
+      v2-plan.md
+      approach.md
 ```
 
 Project directories contain their own overview and version/phase documentation. Root-level documents define the common process and documentation standard.
