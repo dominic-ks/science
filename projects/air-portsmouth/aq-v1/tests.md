@@ -1,8 +1,8 @@
 # Air Portsmouth AQ V1 — Test Record
 
-This file records what V1 testing appears to have achieved and, equally importantly, what it did not.
+This file records what V1 testing appears to have achieved and what still needs to be tested.
 
-V1 should not be described as formally validated. The available understanding is that data was collected, but scientific validation was not completed.
+The available understanding is that data was collected, but calibration, correction, and repeatability testing were not completed.
 
 ---
 
@@ -10,9 +10,9 @@ V1 should not be described as formally validated. The available understanding is
 
 - No formal test protocol is recorded for V1
 - Data appears to have been collected
-- That data was not validated against a defensible reference process
+- That data has not yet been calibrated against official local sensors or a documented reference process
 
-The main result is therefore technical rather than scientific: the system produced data, but the trustworthiness of that data remains unresolved.
+The main result is therefore technical, with the next scientific step being calibration of PMS5003 readings against official local sensors alongside temperature and humidity correction.
 
 ---
 
@@ -41,10 +41,10 @@ Verify that the sensor stack and device-side host path produce data in a real de
 - No documented calibration, co-location, or correction procedure accompanies the dataset
 
 **Conclusion:**
-V1 appears to work technically as a data-producing device, but not scientifically as a validated measurement instrument.
+V1 appears to work technically as a data-producing device. Its measurement credibility depends on the next calibration and correction work.
 
 **Issues to Carry Forward:**
-- A device that produces data is not the same as a device producing trusted AQ measurements
+- A device that produces data still needs calibration before those readings can support stronger AQ claims
 - Calibration and test design must become first-order tasks in V2
 
 ---
@@ -53,10 +53,10 @@ V1 appears to work technically as a data-producing device, but not scientificall
 
 These are important tests that appear necessary but are not recorded as completed in V1.
 
-### Co-location With Reference Station
+### Co-location With Official Local Sensors
 
 **Question:**
-How closely does PMS5003 track a trusted local reference over time?
+How closely does PMS5003 track official local sensors over time?
 
 **Status:**
 Not recorded as completed.
@@ -92,7 +92,7 @@ Not recorded as completed.
 The next phase should document at least:
 
 1. Bench validation that all sensors are producing stable output.
-2. Co-location with a reference station for an extended period.
+2. Co-location with official local sensors for an extended period.
 3. Environmental correlation analysis, especially humidity vs PM response.
 4. Repeatability checks across more than one device or more than one deployment cycle.
 5. Clear separation between raw data, corrected data, and interpreted results.

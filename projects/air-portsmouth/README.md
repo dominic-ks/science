@@ -1,29 +1,25 @@
 # Air Portsmouth
 
-Air Portsmouth is a low-cost, exploratory air quality monitoring project focused on combining existing air quality data sources with locally-built sensors to improve neighbourhood-level visibility.
+Air Portsmouth is a low-cost air quality monitoring project focused on combining existing air quality data sources with locally-built sensors to improve neighbourhood-level visibility.
 
 The main Air Portsmouth project repository is [dominic-ks/air-portsmouth](https://github.com/dominic-ks/air-portsmouth). The documentation in this repository is narrower in scope: it records my personal device-development work for the sensor nodes used in that wider project.
 
-This device work is exploratory and not aimed at regulatory measurement.
+The device work is aimed at understanding how locally-built sensor nodes can produce credible neighbourhood-scale data when paired with calibration, environmental correction, and careful deployment practice.
 
 ---
 
 ## Device Description
 
-This documentation focuses on the node hardware rather than the wider software or platform stack. The device work is early-stage and exploratory. The current device should be treated as a prototype used to understand what can be measured reliably, what cannot, and what the next hardware iteration needs to fix.
+This documentation focuses on the node hardware rather than the wider software or platform stack. The current device should be treated as a prototype used to understand what can be measured reliably, what needs calibration or correction, and what the next hardware iteration needs to fix.
 
 ---
 
 ## Purpose
 
 - Build and document low-cost air quality nodes for real deployment.
-- Test whether the sensor stack produces useful trend data.
+- Test whether the sensor stack produces useful local trend data.
 - Identify which sensors are worth keeping for the next hardware iteration.
 - Record what would be required before the device could support stronger claims.
-
-This device should not be described as regulatory-grade or equivalent to validated reference instrumentation.
-
----
 
 ## Device Scope
 
@@ -31,10 +27,10 @@ The device is intended to:
 
 - capture local trends
 - capture environmental context alongside particulate readings
-- test experimental gas sensors without over-claiming what they mean
+- test gas sensors while documenting calibration limits clearly
 - expose what needs calibration, correction, enclosure work, or removal in V2
 
-At this stage, it should be described as **low-cost, exploratory air quality monitoring hardware**.
+At this stage, it should be described as **low-cost air quality monitoring hardware under active calibration and validation**.
 
 ---
 
@@ -49,17 +45,17 @@ At this stage, it should be described as **low-cost, exploratory air quality mon
 
 | Version | Status | Notes |
 |---------|--------|-------|
-| [AQ V1](./aq-v1/README.md) | Exploratory prototype | First hardware iteration used to test sensor mix, Pi Zero + Pico architecture, and real-world data collection |
+| [AQ V1](./aq-v1/README.md) | Prototype | First hardware iteration used to test sensor mix, Pi Zero + Pico architecture, and real-world data collection |
 
 ---
 
 ## Current Direction
 
-V1 appears useful as a technical prototype, but not yet as a defensible measurement device.
+V1 appears useful as a technical prototype and as the starting point for calibrated particulate monitoring.
 
 The main questions now are:
 
-- how much trust can be placed in PMS5003 trend data
-- how strongly humidity affects the readings
+- how closely PMS5003 particulate readings track official local sensors after calibration
+- how temperature and humidity affect the readings
 - which sensors belong in the next device revision
-- what calibration, enclosure, and test method are required before V2 can support stronger claims
+- what calibration, enclosure, and test method are required before V2 can support stronger claims across all sensors

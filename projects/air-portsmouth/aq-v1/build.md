@@ -16,9 +16,9 @@
 
 ## Build Intent
 
-V1 was built to answer a practical device question: can a low-cost node collect particulate, environmental, and experimental gas-sensor data in the field using a Pi Zero + Pico split?
+V1 was built to answer a practical device question: can a low-cost node collect particulate, environmental, and gas-sensor data in the field using a Pi Zero + Pico split?
 
-The build should be understood as exploratory integration rather than a validated instrument design.
+The build should be understood as prototype integration, with calibration and environmental correction required before making stronger measurement claims.
 
 ---
 
@@ -38,10 +38,10 @@ The build should be understood as exploratory integration rather than a validate
 
 ### MICS6814
 
-**Role:** experimental multi-gas sensing for broad CO / NO2 / NH3 response.
+**Role:** multi-gas sensing for broad CO / NO2 / NH3 response.
 
 **Strength:**
-- Allows experimentation with a compact low-cost gas-sensor module.
+- Allows testing of a compact low-cost gas-sensor module.
 
 **Limitations:**
 - Cross-sensitive across multiple gases.
@@ -53,11 +53,11 @@ The build should be understood as exploratory integration rather than a validate
 **Role:** broad gas / VOC indication.
 
 **Strength:**
-- Useful only as a rough exploratory signal.
+- Useful as a broad gas / VOC signal when interpreted cautiously.
 
 **Limitations:**
-- Not reliable for meaningful AQ interpretation.
-- Effectively unusable for serious measurement without a very constrained experimental context.
+- Not reliable for meaningful AQ interpretation without calibration and a constrained context.
+- Unsuitable for the core measurement path unless a clear interpretation model is proven.
 
 ### DHT22
 
@@ -69,7 +69,7 @@ The build should be understood as exploratory integration rather than a validate
 **Limitations:**
 - Low precision.
 - Slow response.
-- Too weak as the long-term environmental sensor for correction work.
+- Not strong enough as the long-term environmental sensor for correction work.
 
 ---
 
@@ -100,23 +100,23 @@ Known deployment assumptions for V1:
 - USB cables run through windows where needed
 - WiFi used for connectivity
 
-This is sufficient for exploratory fixed-location deployment, but not yet a validated long-term installation approach.
+This is sufficient for fixed-location prototype deployment, with enclosure and airflow work still needed for repeatable long-term installation.
 
 ---
 
 ## Issues
 
-### No Calibration Baseline
+### Calibration Baseline Needed
 
-No calibration baseline is recorded for V1. This means the system can collect values, but cannot support strong claims about absolute particulate or gas concentrations.
+No calibration baseline is recorded for V1. The system can collect values, but stronger claims about absolute particulate or gas concentrations need co-location and correction work.
 
 ### Unknown PM Accuracy
 
-The PMS5003 may still be useful for trends, but its local absolute accuracy is unknown without co-location against a reference station or equivalent validation method.
+The PMS5003 may be useful for credible local particulate data if it can be calibrated against official local sensors and corrected using temperature and humidity context.
 
-### Gas Sensors Are Not Interpretable
+### Gas Sensors Need Calibration
 
-The MICS6814 and MQ-135 add exploratory signals, but those signals do not currently support defensible interpretation. The cross-sensitivity and drift make them poor candidates for trusted pollutant values in V1.
+The MICS6814 and MQ-135 add useful test channels, but those signals need a stronger calibration and interpretation model. Cross-sensitivity and drift mean they should not be treated as trusted pollutant values in V1.
 
 ### No Controlled Airflow Design
 
@@ -136,8 +136,8 @@ Humidity and temperature context are important for interpreting particulate read
 
 - [ ] Replace the DHT22 with a higher-quality environmental sensor such as BME280
 - [ ] Remove MQ-135 from the core measurement path
-- [ ] Keep MICS6814 only as an experimental channel unless a clear interpretation method is proven
+- [ ] Keep MICS6814 as a test channel unless a clear interpretation method is proven
 - [ ] Define and test a controlled enclosure and airflow path
 - [ ] Standardise sensor placement and deployment method
 - [ ] Record the Pico-to-Pi serial schema and host-side handling explicitly
-- [ ] Run calibration and co-location work before making stronger measurement claims
+- [ ] Run calibration and co-location work for PMS5003, temperature, and humidity before making stronger particulate claims
