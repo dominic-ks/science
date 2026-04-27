@@ -1,6 +1,6 @@
 # Air Portsmouth
 
-Air Portsmouth is a low-cost air quality monitoring project focused on combining existing air quality data sources with locally-built sensors to improve neighbourhood-level visibility.
+Air Portsmouth is a low-cost air quality monitoring project focused on combining existing air quality data sources with locally-built sensors to improve neighbourhood-level visibility, as well as an exploratory scientific exercise simply to observe what is happening across the city.
 
 The main Air Portsmouth project repository is [dominic-ks/air-portsmouth](https://github.com/dominic-ks/air-portsmouth). The documentation in this repository is narrower in scope: it records my personal device-development work for the sensor nodes used in that wider project.
 
@@ -25,10 +25,10 @@ This documentation focuses on the node hardware rather than the wider software o
 
 The device is intended to:
 
-- capture local trends
-- capture environmental context alongside particulate readings
-- test gas sensors while documenting calibration limits clearly
-- expose what needs calibration, correction, enclosure work, or removal in V2
+- Capture local trends
+- Capture environmental context alongside particulate readings
+- Test gas sensors while documenting calibration limits clearly
+- Expose what needs calibration, correction, enclosure work, or removal in V2
 
 At this stage, it should be described as **low-cost air quality monitoring hardware under active calibration and validation**.
 
@@ -55,7 +55,7 @@ V1 appears useful as a technical prototype and as the starting point for calibra
 
 The main questions now are:
 
-- how closely PMS5003 particulate readings track official local sensors after calibration
-- how temperature and humidity affect the readings
-- which sensors belong in the next device revision
-- what calibration, enclosure, and test method are required before V2 can support stronger claims across all sensors
+- How closely PMS5003 particulate readings track official local sensors after calibration
+- How temperature and humidity affect the readings
+- Which sensors belong in the next device revision
+- What calibration, enclosure, and test method are required before V2 can support stronger claims across all sensors
