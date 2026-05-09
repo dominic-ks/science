@@ -22,9 +22,10 @@ V1 showed that low-cost AQ hardware can probably be deployed, but it did not est
 
 | Area | Improvement | Notes |
 |------|-------------|-------|
-| Environmental sensing | Replace DHT22 with BME280 | Better humidity and temperature context for correction work |
+| Environmental sensing | Replace DHT22 with BME680 | Provides temperature, humidity, and pressure; replaces DHT22 as the core environmental sensor |
 | Gas sensing | Remove MQ-135 from the core system | Too weak for serious interpretation |
 | Gas sensing | Keep MICS6814 as experimental only | Do not treat it as a trusted pollutant value |
+| Gas sensing | Treat BME680 gas resistance output as experimental | Same category as MICS6814 — not a trusted pollutant value without further characterisation |
 | Sampling design | Standardise enclosure and airflow path | Improve repeatability between devices |
 | Documentation | Define a validation protocol before deployment | Make future results comparable |
 
@@ -49,6 +50,8 @@ These should become structured entries in `tests.md` when executed.
 - [ ] How strong the humidity effect is in real deployments
 - [ ] Whether a practical correction model is viable
 - [ ] What enclosure and airflow design is required for consistent sampling
+- [ ] Whether co-location at a DEFRA site will be permitted
+- [ ] If permitted, how network connectivity and power will be handled at the site
 
 ---
 

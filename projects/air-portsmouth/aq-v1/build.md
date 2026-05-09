@@ -134,7 +134,7 @@ Humidity and temperature context are important for interpreting particulate read
 
 ## Next Build — Key Hardware Improvements
 
-- [ ] Replace the DHT22 with a higher-quality environmental sensor such as BME280
+- [ ] Replace the DHT22 with a BME680 (temperature, humidity, pressure, and experimental gas resistance)
 - [ ] Remove MQ-135 from the core measurement path
 - [ ] Keep MICS6814 only as an experimental channel unless a clear interpretation method is proven
 - [ ] Define and test a controlled enclosure and airflow path
