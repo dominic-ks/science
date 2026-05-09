@@ -6,9 +6,9 @@ Within the wider Air Portsmouth project, this documentation covers my personal d
 
 ## What Was V1?
 
-V1 was an exploratory prototype built to test a low-cost sensor stack, validate the system architecture, and establish whether the device could produce a usable field data stream.
+V1 was a prototype built to test a low-cost sensor stack, validate the system architecture, and establish whether the device could produce a usable field data stream.
 
-It was not a calibrated instrument and should not be treated as suitable for defensible measurements. Its value is mainly in exposing which parts of the system behave consistently enough to justify a more rigorous V2.
+Its value is in exposing which parts of the system behave consistently enough to justify a more rigorous V2, and in preparing the calibration work needed to turn low-cost particulate readings into credible local data.
 
 ---
 
@@ -16,21 +16,21 @@ It was not a calibrated instrument and should not be treated as suitable for def
 
 | # | Objective | Status |
 |---|-----------|--------|
-| 1 | Collect particulate data using PMS5003 | ⚠️ Partial — useful trend data appears possible, but absolute accuracy is unvalidated |
+| 1 | Collect particulate data using PMS5003 | ⚠️ Partial — useful trend data appears possible, with absolute accuracy depending on co-location calibration and environmental correction |
 | 2 | Capture environmental context with temperature and humidity sensing | ⚠️ Partial — data possible, but DHT22 quality and consistency are limited |
-| 3 | Experiment with low-cost gas sensors | ⚠️ Partial — sensors produced output, but interpretation is weak |
+| 3 | Test low-cost gas sensors | ⚠️ Partial — sensors produced output, but interpretation still needs stronger calibration |
 | 4 | Validate the Pi Zero + Pico split architecture | ⚠️ Partial — architecture appears workable, but field robustness and documentation remain incomplete |
-| 5 | Produce a usable device-side data stream | ⚠️ Partial — the device appears to output data, but scientific trust in that data is unresolved |
+| 5 | Produce a usable device-side data stream | ⚠️ Partial — the device appears to output data, with trust depending on calibration, correction, and repeatability work |
 
 ---
 
 ## Final Status
 
-**V1 is technically useful but scientifically incomplete.**
+**V1 is technically useful and calibration work remains.**
 
-It demonstrated that a low-cost device can be assembled and deployed. It did not establish that the measurements are calibrated, interpretable, or suitable for claims beyond trend-level exploratory use.
+It demonstrated that a low-cost device can be assembled and deployed. The next step is to calibrate PMS5003 particulate readings against official local sensors, using temperature and humidity data to understand and correct environmental effects.
 
-V1 should therefore be treated as an architecture and sensor-evaluation platform rather than a finished air quality monitor.
+V1 should therefore be treated as an architecture and sensor-evaluation platform, and as a practical basis for calibrated particulate monitoring.
 
 ### What Works
 
@@ -41,11 +41,11 @@ V1 should therefore be treated as an architecture and sensor-evaluation platform
 
 ### What Doesn't
 
-- No calibration baseline exists
-- Gas sensors are unreliable for absolute pollutant values
+- No calibration baseline exists yet
+- Gas sensors need stronger calibration and interpretation before they can support pollutant-specific values
 - Environmental sensing is inconsistent because DHT22 quality is limited
 - No validated enclosure or airflow design exists
-- There is no confidence in absolute readings
+- Absolute readings need co-location calibration before they can support stronger claims
 
 ---
 

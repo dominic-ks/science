@@ -2,7 +2,7 @@
 
 This file defines how the next stage of the Air Portsmouth device work should be run. It builds on the repository-wide [approach](../../../approach.md) and adapts it for low-cost air quality monitoring.
 
-The main aim is to reduce over-interpretation. Future work should distinguish clearly between a device that produces numbers and a device that supports defensible claims.
+The main aim is to build credible interpretation from clear evidence. Future work should distinguish clearly between a device that produces numbers and a device that supports stronger measurement claims.
 
 ---
 
@@ -12,7 +12,7 @@ The main aim is to reduce over-interpretation. Future work should distinguish cl
 
 Calibration is not a finishing step. For this device, calibration and co-location are central experiments that determine whether stronger interpretation is justified.
 
-If a sensor cannot be calibrated or characterised well enough for its intended use, reduce the claim rather than stretching the evidence.
+If a sensor cannot be calibrated or characterised well enough for its intended use, keep the claim narrow while documenting what would make the evidence stronger.
 
 ### 2. Separate raw, corrected, and interpreted data
 
@@ -41,7 +41,7 @@ If a relevant condition is not known, record it as unknown rather than ignoring 
 
 ### 4. Prefer long-term observation over short tests
 
-Short spot checks are useful for confirming that a sensor is alive. They are weak evidence for calibration, drift, or stronger interpretation.
+Short spot checks are useful for confirming that a sensor is alive. They provide limited evidence for calibration, drift, or stronger interpretation.
 
 When possible, prefer longer deployments that show:
 
@@ -50,25 +50,21 @@ When possible, prefer longer deployments that show:
 - weather sensitivity
 - drift behaviour
 
-### 5. Keep experimental channels separate from core readings
+### 5. Keep test channels separate from core readings
 
-If a signal is exploratory, label it that way.
+If a signal is still being characterised, label it that way.
 
 In particular:
 
-- PMS5003 may support cautious trend reporting before full absolute trust is established
-- MICS6814 should remain experimental unless a specific interpretation method is validated
+- PMS5003 may support credible trend reporting, and could support stronger local particulate claims after co-location calibration with official sensors and temperature / humidity correction
+- MICS6814 should remain a test channel unless a specific interpretation method is validated
 - MQ-135 should not drive core device conclusions
 
 ### 6. Preserve uncertainty explicitly
 
 Unknowns should remain visible in the documentation. Use `[TBC — specific missing detail]` where evidence is missing.
 
-Do not claim:
-
-- regulatory accuracy
-- pollutant-specific certainty from cross-sensitive gas sensors
-- precision that has not been demonstrated
+Do not claim pollutant-specific certainty or precision that has not been demonstrated by calibration, correction, and repeatability testing.
 
 ---
 
@@ -99,4 +95,4 @@ Use the documents this way:
 | [v2-plan.md](./v2-plan.md) | Must-fix issues, experiments, and design principles for V2 |
 | [approach.md](./approach.md) | Project-specific process rules for AQ work |
 
-Do not hide weak evidence inside strong wording. If a result is only good enough for exploratory trend use, document it that way.
+Do not hide limited evidence inside strong wording. If a result is only good enough for trend use, document it that way and state what calibration would make the claim stronger.
