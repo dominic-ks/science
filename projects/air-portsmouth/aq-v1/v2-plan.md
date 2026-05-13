@@ -15,6 +15,7 @@ V1 showed that low-cost AQ hardware can probably be deployed. V2 should focus on
 | 3 | DHT22 needs replacing |
 | 4 | No controlled enclosure / airflow |
 | 5 | No defined test methodology |
+| 6 | MICS6814 stopped reporting data during V1 and never came back online — cause unknown |
 
 ---
 
@@ -24,7 +25,7 @@ V1 showed that low-cost AQ hardware can probably be deployed. V2 should focus on
 |------|-------------|-------|
 | Environmental sensing | Replace DHT22 with BME680 | Provides temperature, humidity, and pressure; replaces DHT22 as the core environmental sensor |
 | Gas sensing | Remove MQ-135 from the core system | Too weak for serious interpretation |
-| Gas sensing | Keep MICS6814 as experimental only | Do not treat it as a trusted pollutant value |
+| Gas sensing | Keep MICS6814 as experimental only | Do not treat it as a trusted pollutant value — note: the V1 unit stopped reporting data partway through and never recovered; investigate cause before reusing |
 | Gas sensing | Treat BME680 gas resistance output as experimental | Same category as MICS6814 — not a trusted pollutant value without further characterisation |
 | Sampling design | Standardise enclosure and airflow path | Improve repeatability between devices |
 | Documentation | Define a validation protocol before deployment | Make future results comparable |

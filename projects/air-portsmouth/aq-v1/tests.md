@@ -46,6 +46,7 @@ V1 appears to work technically as a data-producing device. Its measurement credi
 **Issues to Carry Forward:**
 - A device that produces data still needs calibration before those readings can support stronger AQ claims
 - Calibration and test design must become first-order tasks in V2
+- The MICS6814 stopped reporting data at some point during deployment and never came back online — the cause is unknown and will need investigation before V2
 
 ---
 
