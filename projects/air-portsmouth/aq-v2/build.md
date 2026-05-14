@@ -108,6 +108,8 @@ Requirements:
 - Protection from direct exposure without blocking airflow
 - Repeatable installation method
 
+**Candidate enclosure:** 150×110×70mm waterproof PC plastic junction box — [Temu](https://www.temu.com/uk/-1-2pcs-waterproof-sand-resistant-outdoor-electrical-junction-box-durable-pc-plastic-enclosure-for-tight-spaces-no-opening-design--wiring-150x110x70-grey-wall-mount-box-secure--closure--seal-g-601101116601921.html) (available as 1 or 2 pack — consider ordering 2 to allow lid swapping during sensor work).
+
 ### Power and Deployment
 
 - Mains powered
@@ -193,6 +195,7 @@ The following Phase 2 components are yet to be purchased:
 ### Phase 1
 
 - [ ] Design and test enclosure and airflow path
+- [ ] Determine whether a spare enclosure or additional lid is needed to enable swapping during sensor replacement
 - [ ] Investigate MICS6814 dropout cause from V1
 - [ ] Document serial protocol format and message schema
 - [ ] Standardise sensor placement and deployment method

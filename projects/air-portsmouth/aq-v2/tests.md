@@ -49,14 +49,13 @@ The programme is structured in three phases:
 Confirm all sensors are producing stable output before deployment.
 
 **Setup:**
-[TBC]
+1. Take down the current deployed unit.
+2. Replace sensors as required to bring the unit to V2 spec (DHT22 → BME680, MQ-135 removed).
+3. Bench validate all sensors — confirm stable output before redeployment.
+
+Enclosure note: may need to order a spare enclosure or additional lid to allow swapping without leaving the unit exposed. Confirm whether a second lid is required before starting.
 
 **Result:**
-[TBC]
-
----
-
-### T1.2 — MICS6814 Dropout Investigation
 
 **Goal:**
 Identify why the MICS6814 stopped reporting data during V1 and never recovered, and determine whether the sensor is usable in V2. Run concurrently with T1.1 during the bench phase.
