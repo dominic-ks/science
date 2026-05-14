@@ -45,17 +45,19 @@ At this stage, it should be described as **low-cost air quality monitoring hardw
 
 | Version | Status | Notes |
 |---------|--------|-------|
-| [AQ V1](./aq-v1/README.md) | Prototype | First hardware iteration used to test sensor mix, Pi Zero + Pico architecture, and real-world data collection |
+| [AQ V1](./aq-v1/README.md) | Complete | First hardware iteration used to test sensor mix, Pi Zero + Pico architecture, and real-world data collection |
+| [AQ V2](./aq-v2/README.md) | In progress | Improved hardware with BME680, controlled enclosure, and structured calibration and co-location test programme |
 
 ---
 
 ## Current Direction
 
-V1 appears useful as a technical prototype and as the starting point for calibrated particulate monitoring.
+V1 is complete. It demonstrated that a low-cost device can be assembled and deployed, and identified what needs to change for the next iteration.
 
-The main questions now are:
+V2 is now in progress. The main objectives are:
 
-- How closely PMS5003 particulate readings track official local sensors after calibration
-- How temperature and humidity affect the readings
-- Which sensors belong in the next device revision
-- What calibration, enclosure, and test method are required before V2 can support stronger claims across all sensors
+- Replace the DHT22 with a BME680 for reliable environmental correction data
+- Remove the MQ-135 and treat the MICS6814 as experimental only
+- Design a controlled enclosure and airflow path
+- Run co-location calibration of PMS5003 against official local sensors
+- Complete the temperature and humidity correction work needed before making stronger particulate claims

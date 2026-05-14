@@ -26,11 +26,11 @@ Its value is in exposing which parts of the system behave consistently enough to
 
 ## Final Status
 
-**V1 is technically useful and calibration work remains.**
+**V1 is complete.**
 
-It demonstrated that a low-cost device can be assembled and deployed. The next step is to calibrate PMS5003 particulate readings against official local sensors, using temperature and humidity data to understand and correct environmental effects.
+It demonstrated that a low-cost device can be assembled and deployed. V1 should be treated as an architecture and sensor-evaluation platform and as the starting point for calibrated particulate monitoring.
 
-V1 should therefore be treated as an architecture and sensor-evaluation platform, and as a practical basis for calibrated particulate monitoring.
+The next step is V2, which replaces the weakest hardware components and runs the calibration, co-location, and environmental correction work that V1 did not complete. See [aq-v2](../aq-v2/README.md).
 
 ### What Works
 
@@ -55,8 +55,8 @@ V1 should therefore be treated as an architecture and sensor-evaluation platform
 |------|---------|
 | [build.md](./build.md) | V1 hardware architecture, sensor notes, and known design issues |
 | [tests.md](./tests.md) | What was and was not validated during V1 |
-| [v2-plan.md](./v2-plan.md) | Forward plan for calibration, hardware changes, and test design |
-| [approach.md](./approach.md) | Project-specific working method for AQ device development |
+| [v2-plan.md](./v2-plan.md) | Forward plan for calibration, hardware changes, and test design — the basis for V2 |
+| [approach.md](./approach.md) | Working method written forward for V2 — now lives in [aq-v2/approach.md](../aq-v2/approach.md) |
 
 ---
 
