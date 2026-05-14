@@ -175,6 +175,17 @@ Fixed gateway receiving LoRa packets from the field node and forwarding data ups
 
 Note: 868 MHz (UK/EU band) only.
 
+### Parts to Purchase
+
+The following Phase 2 components are yet to be purchased:
+
+| Item | Source |
+|------|--------|
+| Adafruit RFM95W LoRa breakout (868 MHz) | [The Pi Hut](https://thepihut.com/products/adafruit-rfm95w-lora-radio-transceiver-breakout-868-or-915-mhz?variant=27740304337) |
+| 2000mAh 3.7V LiPo battery | [The Pi Hut](https://thepihut.com/products/2000mah-3-7v-lipo-battery?variant=42143258050755) |
+| Adafruit bq25185 USB/DC/Solar charger + 5V boost board | [The Pi Hut](https://thepihut.com/products/adafruit-bq25185-usb-dc-solar-charger-with-5v-boost-board?variant=53804937380225) |
+| LilyGO TTGO LoRa32 (868 MHz) | [AliExpress](https://www.aliexpress.com/item/1005003062523617.html) |
+
 ---
 
 ## Open Items
