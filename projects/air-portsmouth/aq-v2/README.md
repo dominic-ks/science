@@ -10,6 +10,12 @@ V2 builds on the V1 prototype. The core aim is to turn the system into a more cr
 
 The key hardware change is replacing the DHT22 with a BME680, which is needed before environmental correction work can be done properly. The MQ-135 is removed from the core measurement path. The MICS6814 is kept but treated as experimental only, with investigation of its V1 dropout as part of the test programme.
 
+The V2 programme is structured in three phases:
+
+- **Phase 1** — build and validate the V2 sensor platform on the existing mains/WiFi architecture.
+- **Phase 2** — develop and validate a LoRa/battery field node for temporary co-location deployments without local power or network infrastructure.
+- **Phase 3** — co-location calibration against official local sensors using the Phase 2 field node.
+
 ---
 
 ## Objectives
@@ -20,9 +26,10 @@ The key hardware change is replacing the DHT22 with a BME680, which is needed be
 | 2 | Remove MQ-135 from core measurement path | ⬜ Not started |
 | 3 | Retain MICS6814 as experimental only, investigate V1 dropout | ⬜ Not started |
 | 4 | Design and test a controlled enclosure and airflow path | ⬜ Not started |
-| 5 | Run co-location calibration with official local sensors | ⬜ Not started |
-| 6 | Quantify and model PM vs humidity correction | ⬜ Not started |
-| 7 | Establish a validated test methodology for future deployments | ⬜ Not started |
+| 5 | Develop and validate a LoRa/battery field node for temporary co-location deployments | ⬜ Not started |
+| 6 | Run co-location calibration with official local sensors | ⬜ Not started |
+| 7 | Quantify and model PM vs humidity correction | ⬜ Not started |
+| 8 | Establish a validated test methodology for future deployments | ⬜ Not started |
 
 ---
 

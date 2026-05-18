@@ -56,6 +56,11 @@ Confirm all sensors are producing stable output before deployment.
 Enclosure note: may need to order a spare enclosure or additional lid to allow swapping without leaving the unit exposed. Confirm whether a second lid is required before starting.
 
 **Result:**
+[TBC]
+
+---
+
+### T1.2 — MICS6814 Dropout Investigation
 
 **Goal:**
 Identify why the MICS6814 stopped reporting data during V1 and never recovered, and determine whether the sensor is usable in V2. Run concurrently with T1.1 during the bench phase.
