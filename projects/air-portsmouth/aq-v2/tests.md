@@ -45,6 +45,8 @@ The programme is structured in three phases:
 
 ### T1.1 — Bench Validation
 
+**Date:** 22/05/2026
+
 **Goal:**
 Confirm all sensors are producing stable output before deployment.
 
@@ -56,24 +58,36 @@ Confirm all sensors are producing stable output before deployment.
 Enclosure note: may need to order a spare enclosure or additional lid to allow swapping without leaving the unit exposed. Confirm whether a second lid is required before starting.
 
 **Result:**
-[TBC]
+ - Sensors removed and added, moving to test connectivity to the sensors directly with the Pi Pico.
+ - Retested the PMS5003 and MICS6814 after the sensor swap, and both are working as expected.
+ - First run of BME680 worked perfectly, with the code written in advance with Copilot. 0 issues so far.
+ - Development for Pi Zero firmware and backend functions completed.
+ - Device end to end test successful, with all sensors reporting data to Grafana as expected. Ready for redeployment.
 
 ---
 
 ### T1.2 — MICS6814 Dropout Investigation
 
+**Date:** 22/05/2026
+
 **Goal:**
 Identify why the MICS6814 stopped reporting data during V1 and never recovered, and determine whether the sensor is usable in V2. Run concurrently with T1.1 during the bench phase.
 
 **Setup:**
-[TBC]
+ - AQ device taken down and opened for bench testing.
+ - Connected Pi Zero to power and am monitoring measures via Grafana.
 
 **Result:**
-[TBC]
+ - Oberved that all sensors stopped reporting at approx 0947 on 20/05/2026.
+ - All sensors except MICS6814 recovered after a power cycle. 
+ - After confirming that the MICS6814 was still not reporting after power cycling, I checked the cable in order to rule out a loose connection. Strangely, the sensor was not connected to the ground, with no obvious reason as to why, or how the sensor was operating previously.
+ - Reconnected the ground and the sensor started reporting data again, with no obvious issues.
 
 ---
 
 ### T1.3 — Home Deployment — Reliability
+
+**Date:** 22/05/2026 - ongoing
 
 **Goal:**
 Validate that the unit reliably collects and uploads data over an extended period in a real deployment environment. Confirm there are no connectivity dropouts, sensor failures, or data loss issues before moving to Phase 2.
@@ -82,7 +96,8 @@ Validate that the unit reliably collects and uploads data over an extended perio
 Deploy unit at home on existing mains power and WiFi. Monitor data continuity and sensor output over time.
 
 **Result:**
-[TBC]
+ - V2 device deployed at home on 22/05/2026. Initial data looks good, with all sensors reporting as expected. Will monitor over time to confirm reliability before moving to Phase 2.
+ - As always the PMS is taking some time to warm up. We'll need to monitor this over time to confirm it stabilises as expected.
 
 ---
 
