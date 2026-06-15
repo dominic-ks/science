@@ -94,24 +94,133 @@ The most likely reason that the submarine did not submerge is that the ballast w
 **Goal:**
 Validate the displacement and ballast calculations using the sealed hull only, before reintroducing the internal chassis, electronics, motors, syringe, or power system.
 
+#### Pre-Test Calculation
+
+These are estimates based on nominal dimensions and assumed material density. Weigh the empty hull before the test and substitute the measured value for the acrylic estimate.
+
+| Parameter | Value | Notes |
+|-----------|-------|-------|
+| Hull OD | 110 mm | From build spec |
+| Hull ID | 104 mm | From build spec |
+| Hull length | 250 mm | From build spec |
+| Lid thickness | 3 mm | From build spec |
+| Acrylic density | 1.18 g/cm³ | Standard extruded clear acrylic |
+| Water density (fresh) | 1.00 g/cm³ | Tap water approximation |
+
+**Displaced volume (outer cylinder only, not accounting for lid overhangs):**
+
+V_displaced = π × (55 mm)² × 250 mm = **2,376 cm³**
+
+This is the volume of water pushed aside — and therefore the maximum mass the hull can carry before sinking.
+
+**Estimated hull mass (acrylic only):**
+
+| Component | Volume | Mass |
+|-----------|--------|------|
+| Tube walls: π × (55² − 52²) × 250 mm | 252 cm³ | 298 g |
+| Two lid plates: 2 × π × 55² × 3 mm | 57 cm³ | 67 g |
+| Lid ring inserts, O-rings, Schrader valve, magnets | ~35 cm³ | ~40 g |
+| **Total** | **~344 cm³** | **~405 g** |
+
+**Predicted neutral-buoyancy ballast:**
+
+m_ballast = V_displaced − m_hull = 2,376 − 405 ≈ **~1,970 g**
+
+This is approximately the full 2 kg lead shot pouch. The volume of lead shot at that mass (~177 cm³ at 11.3 g/cm³) occupies only ~8% of the inner cavity, so packing is not a constraint.
+
+Note: this figure will shift once the hull is weighed. A 50 g error in hull mass estimate shifts the required ballast by the same 50 g.
+
+The syringe system (up to ~60 ml of water when working correctly) provides a further ~60 g of variable ballast on top of fixed lead shot. The goal for T3 fixed ballast should therefore be: the hull just barely floats with fixed ballast alone, so that admitting syringe water is enough to tip it into a slow, controlled descent.
+
+---
+
 **Setup:**
 - Empty V1 hull assembled with both lids installed.
 - Internal chassis, electronics, motors, syringe, and power bank removed.
-- Syringe tube hole in the lid temporarily blocked before submersion.
-- Known ballast masses added progressively.
+- Syringe tube hole in the lid temporarily blocked before submersion. Record blocking method.
+- Known ballast masses added progressively and distributed evenly along the hull length.
+
+**Test Protocol:**
+
+Before starting, weigh the empty hull and record below. Recalculate the predicted neutral-buoyancy ballast using the measured value.
+
+Measured empty hull mass: _______ g
+Recalculated ballast target: _______ g  (= 2,376 − measured mass)
+
+Use the following phased approach. At each step: seal the hull, lower it into water, record the float state, then remove and add the next mass increment before proceeding.
+
+*Phase 1 — Coarse (250 g steps, starting 500 g below predicted)*
+
+Start 500 g below the recalculated target. Add 250 g at each step. Record float state at each step until the hull either barely floats or sinks. This phase identifies the 250 g bracket containing neutral buoyancy.
+
+| Step | Total ballast (g) | Float state | Trim / notes |
+|------|-------------------|-------------|--------------|
+| 1 | target − 500 | | |
+| 2 | target − 250 | | |
+| 3 | target | | |
+| 4 | target + 250 | | |
+
+*Phase 2 — Medium (50 g steps within the 250 g bracket)*
+
+Go back to the last ballast mass that clearly floated. Add 50 g at a time. Record until the transition from floating to sinking is observed.
+
+| Step | Total ballast (g) | Float state | Trim / notes |
+|------|-------------------|-------------|--------------|
+| 1 | | | |
+| 2 | | | |
+| 3 | | | |
+| 4 | | | |
+| 5 | | | |
+| 6 | | | |
+
+*Phase 3 — Fine (10 g steps within the 50 g bracket)*
+
+Return to last clearly-floating mass. Add 10 g at a time.
+
+| Step | Total ballast (g) | Float state | Trim / notes |
+|------|-------------------|-------------|--------------|
+| 1 | | | |
+| 2 | | | |
+| 3 | | | |
+| 4 | | | |
+| 5 | | | |
+| 6 | | | |
+
+*Phase 4 — Precision (1 g steps within the 10 g bracket)*
+
+Final convergence. Add 1 g at a time until the transition is found.
+
+| Step | Total ballast (g) | Float state | Trim / notes |
+|------|-------------------|-------------|--------------|
+| 1 | | | |
+| 2 | | | |
+| 3 | | | |
+| 4 | | | |
+| 5 | | | |
+| 6 | | | |
+| 7 | | | |
+| 8 | | | |
+| 9 | | | |
+| 10 | | | |
+
+**Final result:**
+
+Minimum mass to sink: _______ g  
+Mass at which hull just floats: _______ g  
+Measured hull mass: _______ g  
+Measured displaced volume (calculated from above two): V = m_sink / ρ_water = _______ cm³
 
 **Measurements to Record:**
-- Empty hull mass.
-- Estimated displaced water volume from hull dimensions.
-- Calculated ballast required for neutral buoyancy.
-- Ballast mass added at each step.
-- Ballast position along the hull.
+- Empty hull mass before test starts.
+- Ballast mass added at each step (and cumulative total).
+- Ballast distribution method and any changes to distribution between steps.
 - Syringe tube hole blocking method.
-- Observed float state: floats high, near-neutral, or sinks.
-- Observed trim, leaks, bubbles, or unexpected behaviour.
+- Observed float state at each step: floats high / near waterline / sinks slowly / sinks fast.
+- Observed trim: level / bow-up / stern-up / roll.
+- Any leaks, bubbles, or unexpected behaviour.
 
 **Pass Condition:**
-Observed buoyancy broadly matches the calculated ballast requirement, and the hull can be brought near neutral buoyancy without unexplained behaviour.
+The hull transitions from floating to sinking within a range consistent with the pre-calculated prediction (± 100 g is a reasonable first tolerance, given the estimated hull mass). The transition can be pinned to ± 1 g.
 
 **Out of Scope:**
 - Propulsion testing.
@@ -120,16 +229,41 @@ Observed buoyancy broadly matches the calculated ballast requirement, and the hu
 - Powered electronics testing.
 
 **Decision to Make After Test:**
-Whether the buoyancy calculation is trustworthy enough to use as the baseline for chassis-installed testing.
+Whether the buoyancy calculation is trustworthy enough to use as the baseline for chassis-installed testing (T4), and what fixed ballast mass should be used as the T4 starting point.
 
 ---
 
 ### T4 — Chassis-Installed Buoyancy and Trim Reassessment
 
-**Date:** [Planned]
+**Date:** [Planned — complete T3 first]
 
 **Goal:**
 Reassess V1 buoyancy and trim with the internal chassis and electronics installed, using the T3 hull-only result as the baseline. Confirm the dry mass, the mass after water is taken on by the syringe, and whether syringe actuation produces a useful submerge/resurface effect.
+
+#### Pre-Test Calculation
+
+T4 uses the T3 measurement as its starting point. Fill in the T3 result before running this test.
+
+T3 measured minimum-sink ballast: _______ g
+T3 measured empty hull mass: _______ g
+T3 measured displaced volume: _______ cm³
+
+The chassis, electronics, and syringe add mass but negligible volume (they sit inside the existing outer envelope). Each gram of chassis mass reduces the fixed ballast required by one gram.
+
+Weigh the complete internal chassis assembly (electronics, motors, syringe, cabling, power bank) before installing it:
+
+Chassis assembly mass: _______ g
+
+Predicted fixed ballast for T4:
+m_ballast_T4 = T3 minimum-sink ballast − chassis assembly mass = _______ g
+
+The syringe can take on up to ~60 ml of water (~60 g) at full travel (noting that V1 was limited to roughly half travel, so ~30 g in practice). The fixed ballast should be set so the hull floats with the syringe empty, and sinks when the syringe is full. The target is therefore:
+
+Fixed ballast target = T4 predicted ballast − 30 g  (leaves syringe range straddling neutral)
+
+Adjusted fixed ballast target: _______ g
+
+---
 
 **Setup:**
 - V1 hull assembled with internal chassis and electronics reinstalled.
@@ -137,15 +271,65 @@ Reassess V1 buoyancy and trim with the internal chassis and electronics installe
 - Aft motors removed only if they block useful ballast placement.
 - Ballast distributed progressively, using any freed aft space to improve centre-of-mass placement.
 
+**Test Protocol:**
+
+As with T3, use a phased approach — but the coarse-phase starting point is now anchored by the T4 predicted value, so the search range should be much narrower.
+
+*Phase 1 — Coarse (50 g steps, starting 150 g below predicted T4 target)*
+
+| Step | Fixed ballast (g) | Syringe state | Float state | Trim / notes |
+|------|-------------------|---------------|-------------|--------------|
+| 1 | target − 150 | empty | | |
+| 2 | target − 100 | empty | | |
+| 3 | target − 50 | empty | | |
+| 4 | target | empty | | |
+| 5 | target + 50 | empty | | |
+
+*Phase 2 — Medium (10 g steps within the 50 g bracket)*
+
+| Step | Fixed ballast (g) | Syringe state | Float state | Trim / notes |
+|------|-------------------|---------------|-------------|--------------|
+| 1 | | empty | | |
+| 2 | | empty | | |
+| 3 | | empty | | |
+| 4 | | empty | | |
+| 5 | | empty | | |
+| 6 | | empty | | |
+
+*Phase 3 — Precision (1 g steps within the 10 g bracket)*
+
+| Step | Fixed ballast (g) | Syringe state | Float state | Trim / notes |
+|------|-------------------|---------------|-------------|--------------|
+| 1 | | empty | | |
+| 2 | | empty | | |
+| 3 | | empty | | |
+| 4 | | empty | | |
+| 5 | | empty | | |
+| 6 | | empty | | |
+| 7 | | empty | | |
+| 8 | | empty | | |
+| 9 | | empty | | |
+| 10 | | empty | | |
+
+*Phase 4 — Syringe validation (once fixed ballast is dialled in)*
+
+With fixed ballast set to the T4 neutral point (just-floats mass), actuate the syringe and record behaviour.
+
+| Syringe state | Estimated water mass (g) | Float state | Submersion / resurfacing behaviour |
+|---------------|--------------------------|-------------|------------------------------------|
+| Empty | 0 | | |
+| ~¼ full | ~15 | | |
+| ~½ full | ~30 | | |
+| ~¾ full | ~45 | | |
+| Full (if achievable) | ~60 | | |
+
 **Measurements to Record:**
+- Chassis assembly mass before installation.
 - Dry installed vessel mass before syringe intake.
-- Installed vessel mass after syringe intake.
-- Actual onboard water mass, calculated from the difference between dry and post-intake mass.
-- Estimated hull displacement.
-- Recalculated effective density before and after syringe intake.
-- Added ballast mass and position.
-- Centre-of-mass / trim observations.
-- Syringe state and actuation direction.
+- Installed vessel mass after syringe intake (lift out and weigh immediately after test).
+- Actual onboard water mass (difference between above two).
+- Fixed ballast mass and distribution at each test step.
+- Centre-of-mass / trim observations at each step.
 - Observed float state, submersion behaviour, resurfacing behaviour, leaks, bubbles, or mechanical binding.
 
 **Pass Condition:**
