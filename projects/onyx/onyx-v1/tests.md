@@ -240,96 +240,21 @@ Whether the buoyancy calculation is trustworthy enough to use as the baseline fo
 **Goal:**
 Reassess V1 buoyancy and trim with the internal chassis and electronics installed, using the T3 hull-only result as the baseline. Confirm the dry mass, the mass after water is taken on by the syringe, and whether syringe actuation produces a useful submerge/resurface effect.
 
-#### Pre-Test Calculation
-
-T4 uses the T3 measurement as its starting point. Fill in the T3 result before running this test.
-
-T3 measured minimum-sink ballast: _______ g
-T3 measured empty hull mass: _______ g
-T3 measured displaced volume: _______ cm³
-
-The chassis, electronics, and syringe add mass but negligible volume (they sit inside the existing outer envelope). Each gram of chassis mass reduces the fixed ballast required by one gram.
-
-Weigh the complete internal chassis assembly (electronics, motors, syringe, cabling, power bank) before installing it:
-
-Chassis assembly mass: _______ g
-
-Predicted fixed ballast for T4:
-m_ballast_T4 = T3 minimum-sink ballast − chassis assembly mass = _______ g
-
-The syringe can take on up to ~60 ml of water (~60 g) at full travel (noting that V1 was limited to roughly half travel, so ~30 g in practice). The fixed ballast should be set so the hull floats with the syringe empty, and sinks when the syringe is full. The target is therefore:
-
-Fixed ballast target = T4 predicted ballast − 30 g  (leaves syringe range straddling neutral)
-
-Adjusted fixed ballast target: _______ g
-
----
-
 **Setup:**
 - V1 hull assembled with internal chassis and electronics reinstalled.
 - Ballast actuator and syringe fitted.
 - Aft motors removed only if they block useful ballast placement.
 - Ballast distributed progressively, using any freed aft space to improve centre-of-mass placement.
 
-**Test Protocol:**
-
-As with T3, use a phased approach — but the coarse-phase starting point is now anchored by the T4 predicted value, so the search range should be much narrower.
-
-*Phase 1 — Coarse (50 g steps, starting 150 g below predicted T4 target)*
-
-| Step | Fixed ballast (g) | Syringe state | Float state | Trim / notes |
-|------|-------------------|---------------|-------------|--------------|
-| 1 | target − 150 | empty | | |
-| 2 | target − 100 | empty | | |
-| 3 | target − 50 | empty | | |
-| 4 | target | empty | | |
-| 5 | target + 50 | empty | | |
-
-*Phase 2 — Medium (10 g steps within the 50 g bracket)*
-
-| Step | Fixed ballast (g) | Syringe state | Float state | Trim / notes |
-|------|-------------------|---------------|-------------|--------------|
-| 1 | | empty | | |
-| 2 | | empty | | |
-| 3 | | empty | | |
-| 4 | | empty | | |
-| 5 | | empty | | |
-| 6 | | empty | | |
-
-*Phase 3 — Precision (1 g steps within the 10 g bracket)*
-
-| Step | Fixed ballast (g) | Syringe state | Float state | Trim / notes |
-|------|-------------------|---------------|-------------|--------------|
-| 1 | | empty | | |
-| 2 | | empty | | |
-| 3 | | empty | | |
-| 4 | | empty | | |
-| 5 | | empty | | |
-| 6 | | empty | | |
-| 7 | | empty | | |
-| 8 | | empty | | |
-| 9 | | empty | | |
-| 10 | | empty | | |
-
-*Phase 4 — Syringe validation (once fixed ballast is dialled in)*
-
-With fixed ballast set to the T4 neutral point (just-floats mass), actuate the syringe and record behaviour.
-
-| Syringe state | Estimated water mass (g) | Float state | Submersion / resurfacing behaviour |
-|---------------|--------------------------|-------------|------------------------------------|
-| Empty | 0 | | |
-| ~¼ full | ~15 | | |
-| ~½ full | ~30 | | |
-| ~¾ full | ~45 | | |
-| Full (if achievable) | ~60 | | |
-
 **Measurements to Record:**
-- Chassis assembly mass before installation.
 - Dry installed vessel mass before syringe intake.
-- Installed vessel mass after syringe intake (lift out and weigh immediately after test).
-- Actual onboard water mass (difference between above two).
-- Fixed ballast mass and distribution at each test step.
-- Centre-of-mass / trim observations at each step.
+- Installed vessel mass after syringe intake.
+- Actual onboard water mass, calculated from the difference between dry and post-intake mass.
+- Estimated hull displacement.
+- Recalculated effective density before and after syringe intake.
+- Added ballast mass and position.
+- Centre-of-mass / trim observations.
+- Syringe state and actuation direction.
 - Observed float state, submersion behaviour, resurfacing behaviour, leaks, bubbles, or mechanical binding.
 
 **Pass Condition:**
