@@ -27,6 +27,8 @@ Weigh the assembled, sealed, empty hull before adding any ballast.
 | Predicted ballast (= 2376 − hull mass) | _______ g |
 | Phase 1 start (= predicted − 500 g) | _______ g |
 
+<div class="page"/>
+
 ---
 
 ## Phase 1 — Coarse (250 g steps)
@@ -65,6 +67,8 @@ Start at the last clearly-floating mass from Phase 1. Add 50 g at a time.
 
 Phase 2 bracket: floats at _______ g, sinks at _______ g
 
+<div class="page"/>
+
 ---
 
 ## Phase 3 — Fine (10 g steps)
@@ -101,6 +105,8 @@ Start at the last clearly-floating mass from Phase 3. Add 1 g at a time.
 | 4.9 | | | |
 | 4.10 | | | |
 
+<div class="page"/>
+
 ---
 
 ## Result
@@ -135,6 +141,8 @@ Start at the last clearly-floating mass from Phase 3. Add 1 g at a time.
 &nbsp;
 
 &nbsp;
+
+<div class="page"/>
 
 ---
 
