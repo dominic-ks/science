@@ -46,7 +46,7 @@ At this stage, it should be described as **low-cost air quality monitoring hardw
 | Version | Status | Notes |
 |---------|--------|-------|
 | [AQ V1](./aq-v1/README.md) | Complete | First hardware iteration used to test sensor mix, Pi Zero + Pico architecture, and real-world data collection |
-| [AQ V2](./aq-v2/README.md) | In progress | Improved hardware with BME680, controlled enclosure, and structured calibration and co-location test programme |
+| [AQ V2](./aq-v2/README.md) | In progress | BME680 upgrade completed and running; controlled enclosure, calibration, and co-location test programme still in progress |
 
 ---
 
@@ -54,9 +54,10 @@ At this stage, it should be described as **low-cost air quality monitoring hardw
 
 V1 is complete. It demonstrated that a low-cost device can be assembled and deployed, and identified what needs to change for the next iteration.
 
-V2 is now in progress. The main objectives are:
+V2 is now in progress. The first hardware upgrade stage is complete: the DHT22 has been replaced with a BME680 and the upgraded unit is deployed with sensors reporting.
 
-- Replace the DHT22 with a BME680 for reliable environmental correction data
+The remaining main objectives are:
+
 - Remove the MQ-135 and treat the MICS6814 as experimental only
 - Design a controlled enclosure and airflow path
 - Run co-location calibration of PMS5003 against official local sensors

@@ -18,9 +18,9 @@ The programme is structured in three phases:
 
 | # | Test | Status |
 |---|------|--------|
-| T1.1 | Bench validation | ⬜ Not started |
-| T1.2 | MICS6814 dropout investigation | ⬜ Not started |
-| T1.3 | Home deployment — reliability | ⬜ Not started |
+| T1.1 | Bench validation | ✅ Done |
+| T1.2 | MICS6814 dropout investigation | ✅ Done |
+| T1.3 | Home deployment — reliability | 🟡 Ongoing |
 
 ### Phase 2 — LoRa / Battery Architecture
 
