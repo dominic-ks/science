@@ -115,6 +115,35 @@ Requirements:
 
 **Candidate environmental sensor shield:** use a white plumbing part as a passive radiation shield, with upward-sloped drilled side holes for ventilation, insect net over the bottom opening, and the BME680 mounted inside. The sensor cable runs back to the main unit. This should be tested against the current configuration and nearby weather station data before deciding whether it becomes part of the standard node design.
 
+#### Passive Radiation Shield Build Steps
+
+**Materials:**
+- White plastic plumbing cap / fitting large enough to contain the BME680 board without touching the sides.
+- Small plastic spacer, standoff, or internal bracket for mounting the BME680.
+- Fine insect mesh for the bottom opening.
+- UV-stable cable or suitable sensor lead from the shield to the main enclosure.
+- Cable gland, grommet, or sealed pass-through for the main enclosure.
+- Small stainless screws, nylon bolts, or cable ties for mounting.
+- Silicone sealant or outdoor-rated adhesive where needed.
+
+**Build:**
+1. Confirm the BME680 board fits inside the plumbing part with clearance around the sensor opening.
+2. Mark two or more rows of side ventilation holes around the body.
+3. Drill the side holes angled upward from outside to inside, so airflow can enter while rain is discouraged from running in.
+4. Deburr the holes so loose plastic does not sit inside the shield.
+5. Fit insect mesh across the bottom opening, leaving the sides open for airflow.
+6. Mount the BME680 in the middle of the shield, away from the plastic walls and not directly against the top cap.
+7. Route the sensor cable upward or sideways with strain relief so water cannot run along the cable into the shield or enclosure.
+8. Seal only the cable pass-throughs and mechanical fixing points. Do not seal the ventilation path.
+9. Mount the shield below or outside the main enclosure, positioned so it is shaded from the enclosure body as much as practical.
+10. Record final position, orientation, cable length, and photos before deployment.
+
+**Validation after build:**
+- Confirm BME680 temperature, humidity, and pressure update normally before fitting outside.
+- Compare shielded readings against the previous configuration and nearby weather station data.
+- Watch sunny periods specifically, because the main expected improvement is reduced daytime temperature uplift.
+- Check after rain for water ingress, condensation, blocked holes, or insect mesh obstruction.
+
 ### Power and Deployment
 
 - Mains powered

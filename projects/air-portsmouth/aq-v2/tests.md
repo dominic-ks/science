@@ -171,15 +171,32 @@ The BME680 temperature channel has been reporting a flat **34.7 deg C** since **
 Identify whether the fault is caused by the BME680 sensor, wiring, Pico firmware, serial payload handling, or backend ingestion/display. Decide whether the BME680 should be replaced before Phase 2 field-node work continues.
 
 **Setup:**
-[TBC]
+Use a remote-first investigation sequence before opening the device. The aim is to separate a real sensor fault from a firmware, serial, upload, or dashboard/data-query problem.
 
-Initial checks to run:
-- Confirm whether humidity, pressure, and gas resistance changed while temperature remained fixed.
-- Check raw Pico serial output before the Pi Zero upload path.
-- Inspect BME680 wiring and connector seating.
+**Stage 1 — remote data-path checks:**
+- Check whether BME680 humidity, pressure, and gas resistance continued changing while temperature stayed fixed at 34.7 deg C.
+- Compare raw stored records, backend/API output, and Grafana display for the same timestamps.
+- Confirm whether the 36-hour reporting gap affected only BME680 values or the whole device payload.
+- Check whether the same fixed value appears before any backend transformation, rounding, or unit conversion.
+- Confirm whether the upload path is reusing the last good temperature value when a BME read fails.
+
+**Stage 2 — remote device checks over SSH:**
+- Check Pi Zero service logs around 2026-06-15 03:32:29 and 2026-06-17 02:27:30.
+- Confirm whether the Pico is still sending fresh serial packets.
+- Capture raw USB serial output from the Pico and compare it with uploaded payloads.
+- Restart only the host upload service, then the Pico/serial path if possible, recording whether any BME680 field changes.
+- Check device uptime and any power/network events around the fault times.
+
+**Stage 3 — controlled remote stimulus if practical:**
+- If the unit is safely accessible without opening, change the local environment around the enclosure slightly and watch whether humidity or pressure responds while temperature remains fixed.
+- Do not interpret this as calibration evidence; it is only a liveness check.
+
+**Stage 4 — hardware inspection if the remote checks still point at the sensor path:**
+- Power down and inspect BME680 wiring, connector seating, and solder joints.
+- Check for moisture, corrosion, contamination, or heat damage near the BME680.
 - Test the BME680 directly on the bench with a minimal read script.
 - Swap in a known-good BME680 if available.
-- Confirm backend ingestion is not reusing a stale temperature value.
+- If the sensor is replaced, record the replacement date and reset the deployment baseline.
 
 **Result:**
 [TBC]
@@ -209,6 +226,8 @@ Use a plumbing part as a simple passive shield:
 - Insect net blocking the bottom opening.
 - BME680 mounted inside the shield.
 - Sensor wired back to the main AQ unit.
+
+Build steps are recorded in [build.md](./build.md).
 
 This is a data-quality improvement rather than a core AQ requirement. Particulate readings are already reasonably protected; the environmental readings stand to gain the most.
 
