@@ -29,6 +29,8 @@ The programme is structured in three phases:
 | T2.1 | LoRa/battery architecture — research and design | ⬜ Not started |
 | T2.2 | LoRa range test — co-location site | ⬜ Not started |
 | T2.3 | LoRa/battery deployment — home longevity | ⬜ Not started |
+| T2.4 | BME680 fixed-temperature fault investigation | ⬜ Not started |
+| T2.5 | Passive radiation shield / external environmental sensor test | ⬜ Not started |
 
 ### Phase 3 — Co-location Calibration
 
@@ -160,6 +162,67 @@ Deploy field node at home on battery with LoRa uplink to home gateway. Run full 
 
 ---
 
+### T2.4 — BME680 Fixed-Temperature Fault Investigation
+
+**Observed issue:**
+The BME680 temperature channel has been reporting a flat **34.7 deg C** since **2026-06-15 03:32:29**. The sensor then stopped reporting from **2026-06-17 02:27:30** for approximately 36 hours. When reporting resumed, the temperature value was still fixed at **34.7 deg C**. Restarting the unit had no effect.
+
+**Goal:**
+Identify whether the fault is caused by the BME680 sensor, wiring, Pico firmware, serial payload handling, or backend ingestion/display. Decide whether the BME680 should be replaced before Phase 2 field-node work continues.
+
+**Setup:**
+[TBC]
+
+Initial checks to run:
+- Confirm whether humidity, pressure, and gas resistance changed while temperature remained fixed.
+- Check raw Pico serial output before the Pi Zero upload path.
+- Inspect BME680 wiring and connector seating.
+- Test the BME680 directly on the bench with a minimal read script.
+- Swap in a known-good BME680 if available.
+- Confirm backend ingestion is not reusing a stale temperature value.
+
+**Result:**
+[TBC]
+
+---
+
+### T2.5 — Passive Radiation Shield / External Environmental Sensor Test
+
+**Background:**
+Temperature readings from the AQ unit have appeared higher than nearby weather stations, especially during sunny periods. The likely cause is solar heating of the enclosure and limited airflow around the environmental sensor, causing the BME680 to measure warmed enclosure air rather than true ambient air.
+
+The PMS5003 particulate sensor does not appear to be affected in the same way. The main data-quality risk is therefore temperature, with humidity affected to a lesser extent.
+
+**Goal:**
+Design and test a simple passive radiation shield or external sensor arrangement so the environmental sensor measures ambient air temperature and humidity more accurately.
+
+Expected benefits:
+- Reduce daytime temperature spikes caused by direct or indirect solar heating.
+- Improve agreement with nearby weather stations.
+- Improve humidity readings used for particulate correction work.
+- Decide whether future AQ nodes should use a permanent shielded external environmental sensor.
+
+**Planned design:**
+Use a plumbing part as a simple passive shield:
+- White plastic body.
+- Sloped upward side holes drilled for ventilation while reducing rain ingress.
+- Insect net blocking the bottom opening.
+- BME680 mounted inside the shield.
+- Sensor wired back to the main AQ unit.
+
+This is a data-quality improvement rather than a core AQ requirement. Particulate readings are already reasonably protected; the environmental readings stand to gain the most.
+
+**Comparison method:**
+Compare:
+- Current internal / enclosure-adjacent sensor configuration.
+- Shielded external BME680 configuration.
+- Nearby weather station data.
+
+**Result:**
+[TBC]
+
+---
+
 ### T3.1 — Co-location With Official Local Sensors
 
 **Goal:**
@@ -223,9 +286,11 @@ Determine whether device-to-device and site-to-site comparisons are interpretabl
 4. LoRa/battery architecture research, design, and build (T2.1).
 5. LoRa range test at target co-location site (T2.2).
 6. LoRa/battery home longevity deployment (T2.3).
+7. Investigate and resolve the BME680 fixed-temperature fault before relying on environmental correction values (T2.4).
+8. Test passive radiation shield / external environmental sensor arrangement before co-location calibration (T2.5).
 
 **Phase 3 — Co-location calibration:**
-7. Co-location with official local sensors for an extended period (T3.1).
-8. Environmental correlation analysis — humidity vs PM response (T3.2).
-9. Baseline drift check across a meaningful deployment window (T3.3).
-10. Repeatability checks across more than one device or deployment cycle (T3.4).
+9. Co-location with official local sensors for an extended period (T3.1).
+10. Environmental correlation analysis — humidity vs PM response (T3.2).
+11. Baseline drift check across a meaningful deployment window (T3.3).
+12. Repeatability checks across more than one device or deployment cycle (T3.4).

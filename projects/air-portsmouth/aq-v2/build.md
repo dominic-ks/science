@@ -57,6 +57,7 @@ The build should be understood as an improved calibration and validation platfor
 
 **Limitations:**
 - Gas resistance output should not be treated as a trusted pollutant value without further characterisation.
+- Current V2 deployment has shown a fixed-temperature fault: temperature flat at 34.7 deg C from 2026-06-15 03:32:29, followed by a reporting gap from 2026-06-17 02:27:30 for approximately 36 hours, then reporting resumed still fixed at 34.7 deg C. Restarting did not clear the fault. Investigate before relying on BME680 data for correction work.
 
 ### MICS6814
 
@@ -100,15 +101,19 @@ Even though MICS6814 output is not being treated as a primary measurement, there
 
 ### Enclosure and Airflow
 
-[TBC — enclosure design and airflow path]
+The enclosure and airflow design must prevent the environmental sensor from measuring sun-warmed enclosure air instead of ambient air. The current enclosure has bottom ventilation holes, but field observations suggest that may not be enough during sunny periods.
 
 Requirements:
 - Controlled air intake and outlet
 - Defined sensor positioning
 - Protection from direct exposure without blocking airflow
 - Repeatable installation method
+- Shield environmental sensor from direct and indirect solar heating
+- Keep environmental sensor airflow representative of ambient air
 
 **Candidate enclosure:** 150×110×70mm waterproof PC plastic junction box — [Temu](https://www.temu.com/uk/-1-2pcs-waterproof-sand-resistant-outdoor-electrical-junction-box-durable-pc-plastic-enclosure-for-tight-spaces-no-opening-design--wiring-150x110x70-grey-wall-mount-box-secure--closure--seal-g-601101116601921.html) (available as 1 or 2 pack — consider ordering 2 to allow lid swapping during sensor work).
+
+**Candidate environmental sensor shield:** use a white plumbing part as a passive radiation shield, with upward-sloped drilled side holes for ventilation, insect net over the bottom opening, and the BME680 mounted inside. The sensor cable runs back to the main unit. This should be tested against the current configuration and nearby weather station data before deciding whether it becomes part of the standard node design.
 
 ### Power and Deployment
 
@@ -208,3 +213,5 @@ The following Phase 2 components are yet to be purchased:
 - [ ] Define and document LoRa packet payload schema
 - [ ] Determine whether MICS6814 is viable within battery power budget
 - [ ] Design and implement power management and duty cycle
+- [ ] Investigate BME680 fixed-temperature fault before relying on environmental correction values
+- [ ] Build and test passive radiation shield / external BME680 arrangement
