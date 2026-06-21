@@ -18,6 +18,7 @@ The main outcomes were:
 - The Schrader valve did not seal gas properly during syringe operation.
 - The syringe ballast mechanism itself was mechanically promising.
 - Ballast distribution and internal layout produced poor balance.
+- T3 measured hull-only displacement at approximately 2,460 cm³, close to the 2,376 cm³ nominal prediction, but water ingress around the valve was still observed.
 
 V1 should therefore not be used for further live RC-control development in its current hardware configuration. It can still be used as a controlled physical measurement platform before V2, especially for buoyancy, density, ballast, centre-of-mass, and syringe-actuation questions.
 
@@ -89,14 +90,17 @@ The most likely reason that the submarine did not submerge is that the ballast w
 
 ### T3 — Hull-Only Ballast Validation
 
-**Date:** [Planned]
+**Date:** [21/06/2026]
 
 **Goal:**
 Validate the displacement and ballast calculations using the sealed hull only, before reintroducing the internal chassis, electronics, motors, syringe, or power system.
 
-#### Pre-Test Calculation
+**Source:**
+Completed field sheet: [t3-field-sheet_completed.pdf](./t3-field-sheet_completed.pdf)
 
-These are estimates based on nominal dimensions and assumed material density. Weigh the empty hull before the test and substitute the measured value for the acrylic estimate.
+#### Pre-Test Calculation and Measured Setup
+
+The original estimate used the nominal hull dimensions and assumed material density. The completed test substituted the measured empty hull mass.
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
@@ -106,6 +110,9 @@ These are estimates based on nominal dimensions and assumed material density. We
 | Lid thickness | 3 mm | From build spec |
 | Acrylic density | 1.18 g/cm³ | Standard extruded clear acrylic |
 | Water density (fresh) | 1.00 g/cm³ | Tap water approximation |
+| Measured empty hull mass | 455 g | Scale accuracy noted as questionable |
+| Recalculated ballast target | 1,921 g | 2,376 g − 455 g |
+| Phase 1 start mass | 1,421 g | Target − 500 g |
 
 **Displaced volume (outer cylinder only, not accounting for lid overhangs):**
 
@@ -113,129 +120,97 @@ V_displaced = π × (55 mm)² × 250 mm = **2,376 cm³**
 
 This is the volume of water pushed aside — and therefore the maximum mass the hull can carry before sinking.
 
-**Estimated hull mass (acrylic only):**
-
-| Component | Volume | Mass |
-|-----------|--------|------|
-| Tube walls: π × (55² − 52²) × 250 mm | 252 cm³ | 298 g |
-| Two lid plates: 2 × π × 55² × 3 mm | 57 cm³ | 67 g |
-| Lid ring inserts, O-rings, Schrader valve, magnets | ~35 cm³ | ~40 g |
-| **Total** | **~344 cm³** | **~405 g** |
-
-**Predicted neutral-buoyancy ballast:**
-
-m_ballast = V_displaced − m_hull = 2,376 − 405 ≈ **~1,970 g**
-
-This is approximately the full 2 kg lead shot pouch. The volume of lead shot at that mass (~177 cm³ at 11.3 g/cm³) occupies only ~8% of the inner cavity, so packing is not a constraint.
-
-Note: this figure will shift once the hull is weighed. A 50 g error in hull mass estimate shifts the required ballast by the same 50 g.
-
-The syringe system (up to ~60 ml of water when working correctly) provides a further ~60 g of variable ballast on top of fixed lead shot. The goal for T3 fixed ballast should therefore be: the hull just barely floats with fixed ballast alone, so that admitting syringe water is enough to tip it into a slow, controlled descent.
-
----
-
 **Setup:**
 - Empty V1 hull assembled with both lids installed.
 - Internal chassis, electronics, motors, syringe, and power bank removed.
-- Syringe tube hole in the lid temporarily blocked before submersion. Record blocking method.
+- Syringe tube hole blocked with Blu Tack.
 - Known ballast masses added progressively and distributed evenly along the hull length.
+- Test container water dimensions recorded as approximately 33 cm deep, 66 cm long, and 59 cm wide.
 
-**Test Protocol:**
+**Result:**
+The hull transitioned from near-waterline float to sinking between **2,004 g and 2,005 g** of added ballast. The final 2,005 g sink mass was rechecked.
 
-Before starting, weigh the empty hull and record below. Recalculate the predicted neutral-buoyancy ballast using the measured value.
+Measured total mass at first clear sink:
 
-Measured empty hull mass: _______ g
-Recalculated ballast target: _______ g  (= 2,376 − measured mass)
+455 g hull + 2,005 g ballast = **2,460 g**
 
-Use the following phased approach. At each step: seal the hull, lower it into water, record the float state, then remove and add the next mass increment before proceeding.
+At 1.00 g/cm³ water density, this implies a measured displaced volume of approximately **2,460 cm³**, which is **84 cm³ higher** than the 2,376 cm³ nominal calculation.
 
-*Phase 1 — Coarse (250 g steps, starting 500 g below predicted)*
+This is within the original ±100 g tolerance, so the displacement calculation is close enough for T4 planning. The result also shows that the hull-only neutral ballast requirement is higher than the measured-mass estimate by about 84 g.
 
-Start 500 g below the recalculated target. Add 250 g at each step. Record float state at each step until the hull either barely floats or sinks. This phase identifies the 250 g bracket containing neutral buoyancy.
+**Recorded Test Steps:**
 
-| Step | Total ballast (g) | Float state | Trim / notes |
-|------|-------------------|-------------|--------------|
-| 1 | target − 500 | | |
-| 2 | target − 250 | | |
-| 3 | target | | |
-| 4 | target + 250 | | |
+Float state key: **F** = floats clearly / **N** = near waterline / **S** = sinks
 
-*Phase 2 — Medium (50 g steps within the 250 g bracket)*
+Tilt key: **L** = level
 
-Go back to the last ballast mass that clearly floated. Add 50 g at a time. Record until the transition from floating to sinking is observed.
+| Step | Total ballast (g) | Float | Tilt | Notes |
+|------|-------------------|-------|------|-------|
+| 1.1 | 1,421 | F | L | Slight tilt; sits quite low |
+| 1.2 | 1,671 | F | L | Low; water clearly entering around valve |
+| 1.3 | 1,921 | N | L | Very low |
+| 2.1 | 1,971 | F | L | |
+| 2.2 | 2,021 | S | L | |
+| 3.1 | 1,981 | F | L | |
+| 3.2 | 1,991 | F | L | |
+| 3.3 | 2,001 | F | L | |
+| 3.4 | 2,011 | S | L | Tiny bit at the bottom |
+| 4.1 | 2,002 | N | L | |
+| 4.2 | 2,003 | N | L | |
+| 4.3 | 2,004 | N | L | Recorded as last mass that floated, despite near-waterline state |
+| 4.4 | 2,005 | S | L | Final sink mass, rechecked |
 
-| Step | Total ballast (g) | Float state | Trim / notes |
-|------|-------------------|-------------|--------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
+**Observations:**
+- All pre-requisites were checked before testing.
+- The syringe hole was blocked with Blu Tack.
+- Water was clearly entering around the valve by step 1.2.
+- The scale accuracy is questionable; it was sometimes skipping 2 g at a time.
+- The final ballast mass was rechecked at 2,005 g.
 
-*Phase 3 — Fine (10 g steps within the 50 g bracket)*
+**Conclusion:**
+The hull-only buoyancy calculation is trustworthy enough to use as a T4 baseline, with measured displacement taken as **approximately 2,460 cm³** rather than the nominal 2,376 cm³.
 
-Return to last clearly-floating mass. Add 10 g at a time.
+For future tests, use the measured displacement as the mass budget:
 
-| Step | Total ballast (g) | Float state | Trim / notes |
-|------|-------------------|-------------|--------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
+m_fixed_ballast = 2,460 g − installed dry vessel mass − desired syringe margin
 
-*Phase 4 — Precision (1 g steps within the 10 g bracket)*
+If the syringe can reliably admit about 60 ml of water, the fixed-ballast target should leave roughly a 60 g positive-buoyancy margin before syringe intake. Using the hull-only test as a simple reference, that would put the hull near sinking at about 2,005 g of fixed ballast and near syringe-controlled transition at about 1,945 g of fixed ballast.
 
-Final convergence. Add 1 g at a time until the transition is found.
+The sealing result did not pass: water ingress around the valve was observed. The valve or blocked syringe-hole area must be treated as unresolved before any electronics-installed water test.
 
-| Step | Total ballast (g) | Float state | Trim / notes |
-|------|-------------------|-------------|--------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
-| 7 | | | |
-| 8 | | | |
-| 9 | | | |
-| 10 | | | |
+**Addendum — Displacement Model Correction:**
+After reviewing the T3 result, the main source of the prediction error was identified as the external lid geometry. The original displacement estimate treated the hull as the main 110 mm diameter, 250 mm long cylinder only. The actual hull includes two external square acrylic lid plates, each approximately 13 cm × 13 cm × 3 mm, which add displaced volume.
 
-**Final result:**
+| Item | Old assumption | Corrected assumption | Measured / observed |
+|------|----------------|----------------------|---------------------|
+| Main tube displaced volume | 2,376 cm³ | 2,376 cm³ | Same |
+| External lid displaced volume | 0 cm³ | ~101 cm³ | 2 × 13 cm × 13 cm × 0.3 cm |
+| Total predicted displacement | 2,376 cm³ | ~2,477 cm³ | ~2,460 cm³ |
+| Difference from measured displacement | +84 cm³ measured vs old | -17 cm³ measured vs corrected | Within test uncertainty |
 
-Minimum mass to sink: _______ g  
-Mass at which hull just floats: _______ g  
-Measured hull mass: _______ g  
-Measured displaced volume (calculated from above two): V = m_sink / ρ_water = _______ cm³
+One of the lid plates is not a full square because a corner is cut off. That missing corner likely explains much of the remaining ~17 cm³ difference between the corrected square-lid estimate and the measured displacement.
 
-**Measurements to Record:**
-- Empty hull mass before test starts.
-- Ballast mass added at each step (and cumulative total).
-- Ballast distribution method and any changes to distribution between steps.
-- Syringe tube hole blocking method.
-- Observed float state at each step: floats high / near waterline / sinks slowly / sinks fast.
-- Observed trim: level / bow-up / stern-up / roll.
-- Any leaks, bubbles, or unexpected behaviour.
+| Item | Old mass model | Corrected mass model | Measured |
+|------|----------------|----------------------|----------|
+| Tube wall material mass | ~298 g | ~298 g | |
+| Lid plate material mass | ~67 g, based on circular plates | ~120 g, based on square plates | |
+| Rings, O-rings, valve, magnets allowance | ~40 g | ~40 g | |
+| Predicted empty hull mass | ~405 g | ~458 g | 455 g |
 
-**Pass Condition:**
-The hull transitions from floating to sinking within a range consistent with the pre-calculated prediction (± 100 g is a reasonable first tolerance, given the estimated hull mass). The transition can be pinned to ± 1 g.
+| Item | Old prediction | Corrected prediction | Measured |
+|------|----------------|----------------------|----------|
+| Predicted displacement | 2,376 g water | ~2,477 g water | ~2,460 g water |
+| Predicted hull mass | ~405 g | ~458 g | 455 g |
+| Predicted ballast to sink | ~1,971 g | ~2,019 g | 2,005 g |
+| Error vs measured sink ballast | +34 g measured vs old | -14 g measured vs corrected | |
 
-**Out of Scope:**
-- Propulsion testing.
-- Live-control communication testing.
-- Syringe actuation.
-- Powered electronics testing.
-
-**Decision to Make After Test:**
-Whether the buoyancy calculation is trustworthy enough to use as the baseline for chassis-installed testing (T4), and what fixed ballast mass should be used as the T4 starting point.
+Conclusion: the T3 result is consistent with the physical geometry once the square external lids are included. The corrected model is close enough for ballast planning; remaining differences are plausibly due to scale behaviour, rounded or rough lid edges, valve and Blu Tack geometry, and judgement around the near-waterline-to-sink transition.
 
 ---
 
 ### T4 — Chassis-Installed Buoyancy and Trim Reassessment
 
-**Date:** [Planned — complete T3 first]
+**Date:** [Planned]
 
 **Goal:**
 Reassess V1 buoyancy and trim with the internal chassis and electronics installed, using the T3 hull-only result as the baseline. Confirm the dry mass, the mass after water is taken on by the syringe, and whether syringe actuation produces a useful submerge/resurface effect.
