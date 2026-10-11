@@ -65,6 +65,7 @@ Observed in BigQuery on 2026-10-09, after the Sonoff reconnected at 17:53:
 
 **Implications for the test:**
 
+- *Update, 2026-10-11 (T1):* the Sonoff also sends a repeat report every ~15–50 minutes when nothing has changed, so it never goes fully silent. That doesn't help resolution, though: changes smaller than 1 point still don't show up.
 - Once the enclosure settles, the Sonoff may stop sending updates for long periods. The last reported value may then be up to about 1 point away from what the sensor currently reads. BigQuery alone then has about ±1 point resolution at the settled value.
 - **Mitigation 1 (preferred):** read the Sonoff's own LCD through the container at the end of the test, or photograph it. Record the value in the field log.
 - **Mitigation 2 (optional):** check in Zigbee2MQTT whether the humidity reporting threshold (reportable change) can be lowered for this device before the test. Record any change made and set it back afterwards if needed. [TBC — whether the SNZB-02D accepts a reporting config change]

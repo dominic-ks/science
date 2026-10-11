@@ -6,7 +6,9 @@ This file records the saturated-salt test of the Sonoff SNZB-02D and the resulti
 
 ## Summary
 
-Not yet run. T1 places the Sonoff in a sealed enclosure over saturated NaCl overnight. It compares the settled reading with the ~75.4 % reference and uses the error to keep or adjust the DHT22 correction.
+**T1 in progress (sealed 2026-10-11 13:21 BST).** Interim: the Sonoff has read 73.8 % since 16:53 BST, about 1.6 points under the ~75.4 % reference, which is inside the ±3 hypothesis band. Final reading due when the jar is opened.
+
+T1 places the Sonoff in a sealed enclosure over saturated NaCl overnight. It compares the settled reading with the ~75.4 % reference and uses the error to keep or adjust the DHT22 correction.
 
 ---
 
@@ -14,7 +16,7 @@ Not yet run. T1 places the Sonoff in a sealed enclosure over saturated NaCl over
 
 ### T1 — Sonoff vs Saturated NaCl, Overnight
 
-**Date:** [TBC — run date]
+**Date:** 2026-10-11 13:21 BST (sealed) → [TBC — opening time]
 
 **Goal:**
 Measure the Sonoff's humidity error at ~75 % RH against a saturated-salt reference, and decide whether the DHT22 correction (`true RH ≈ 0.483 × DHT22 + 26.36`) needs adjusting.
@@ -62,14 +64,34 @@ Record times in local time (BST until 2026-10-25). **BigQuery `datetime` values 
 
 | Event | Local time | UTC | Sonoff LCD RH | Sonoff LCD temp | Room temp | Notes |
 |-------|------------|-----|---------------|-----------------|-----------|-------|
-| Container sealed | | | | | | |
-| Check (optional) | | | | | | |
+| Container sealed | 13:21 | 12:21 | 69.7 % (photo) | [TBC — not legible in photo] | ~22.4 °C (Sonoff, BigQuery) | Glass clip-top jar. Sonoff on a wooden block over a saucer of salt slurry |
+| Check | 13:24 | 12:24 | 71 % (photo; decimal not legible) | | | |
+| Check | ~14:22 onwards | ~13:22 onwards | 72.8 % "most of the day" (anecdotal) | | | |
+| Check | ~19:30 | ~18:30 | 73.8 % | | 21.4 °C (Sonoff, BigQuery) | |
 | Just before opening | | | | | | |
 | Container opened | | | | | | |
 
 Observations (reference by event, e.g. "sealed: condensation on lid"):
 
-- 
+- Sealed: photos taken at 13:21 and 13:24 BST.
+
+![Sonoff display reading 69 % through the jar glass, just after sealing](images/t1-sealed-1321-bst.jpg)
+*13:21 BST, immediately after sealing. The display reads 69.x %, matching the 69.7 % BigQuery report at 12:21:51 UTC.*
+
+![Glass clip-top jar containing the Sonoff on a wooden block above a saucer of salt](images/t1-sealed-1324-bst.jpg)
+*13:24 BST. Full setup: Sonoff on an uncovered wooden block, which rests on a cling-film-wrapped support on the slurry saucer. The display reads 71.x %.*
+
+- Pre-seal (12:46–13:21 BST): BigQuery shows readings swinging between 63.9 and 72.4 % while the setup was being prepared. These are not part of the test.
+- BigQuery humidity reports after sealing (UTC): 71.6 (12:21:36), 69.7, 70.8, 71.8 (12:22:42), 72.8 (13:22:11), 73.8 (15:53:47). Every report from 15:53 to 20:51 UTC (12 reports over 5 h) is 73.8.
+- The Sonoff sends repeat reports about every 15–50 minutes even when nothing has changed. Humidity steps between reports during the run are exactly 1.0 point.
+- Enclosure temperature (Sonoff, BigQuery): 22.4 °C at seal, falling to 21.4 °C by 18:03 UTC, then rising to 22.4 °C (19:37) and 23.0 °C (20:37).
+- The LCD and BigQuery agree at both photographed times.
+
+Interim interpretation (2026-10-11 ~22:00 BST; observations above, conclusion in **Result**):
+
+- Most of the rise happened in the first 3.5 h. Since then the reading has stayed within the same 1-point reporting step, so BigQuery can't show whether it is still creeping up. The LCD (0.1 resolution) can.
+- The uncovered wooden block is hygroscopic and may slow settling by soaking up moisture. The cling-film-wrapped support should not.
+- The temperature range since 16:53 BST is 1.6 °C (21.4–23.0), outside the ≤ 1 °C validity limit. The evening rise of 1.6 °C in 1.5 h is the kind of change that can briefly lower the reading at the sensor. Check whether the overnight period is steadier.
 
 ---
 
