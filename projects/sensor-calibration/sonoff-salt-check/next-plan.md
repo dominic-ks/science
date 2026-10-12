@@ -17,7 +17,7 @@
 
 | Experiment | Goal | Priority |
 |------------|------|----------|
-| T2 — Second reference point: saturated MgCl₂ (~33 % RH) or K₂CO₃ (~43 % RH) | Separate an offset error from a gain (slope) error, so the DHT22 correction can be adjusted across its range and not just at 75 % | **Medium.** T1 gave \|e\| = 0.6 < U = 1.9, so there is no evidence of a problem at 75 %, but gain error at ~50 % is still unchecked |
+| T2 — Second reference point: saturated Mg(NO₃)₂ (~54 % RH) — **chosen 2026-10-12**; fallbacks K₂CO₃ (~43 %) or MgCl₂ (~33 %) | Separate an offset error from a gain (slope) error, so the DHT22 correction can be adjusted across its range and not just at 75 % | **Medium.** T1 gave \|e\| = 0.6 < U = 1.9, so there is no evidence of a problem at 75 %, but gain error at ~50 % is still unchecked |
 | T3 — Repeat NaCl check | Detect Sonoff drift over time | Every 6–12 months, or after any suspicious reading |
 | T4 — DHT22 directly over salt (if it can be removed from the home Pi) | Check the DHT22 against the physical reference directly, without going through the Sonoff | Low; only if the DHT22 can be moved without disturbing the long-term setup |
 
@@ -27,8 +27,23 @@ Probably yes. T1 found no significant error at 75 %, so this is about confirming
 
 - The correction was fitted over Sonoff readings of **~51–71 %** (5th–95th percentile, Oct 2025 – May 2026). NaCl at 75 % sits just above that range, so T1 checks the top end only.
 - A gain error can't be ruled out with one point. A second point lets the Sonoff's own two-point correction (`true = a × Sonoff + b`) be chained into the DHT22 correction.
-- **K₂CO₃ (~43 %)** sits nearer the bottom of the fitted range than MgCl₂ (~33 %), so a gain error in the range that matters shows up less extrapolated. MgCl₂ spans a wider range and is more temperature-stable, and is easier to buy (bath flakes). Either works. [TBC — pick based on availability]
-- Unlike table salt, both need buying. MgCl₂ settles more slowly. T1's NaCl took ~10 h to reach its final step in this jar, so allow 24–36 h.
+- **Chosen: magnesium nitrate, Mg(NO₃)₂ (~54 %).** It sits inside the fitted range (51–71 %), so it checks the Sonoff where the correction is actually used. With NaCl at 75 % it gives two points ~21 RH points apart.
+- Fallbacks if Mg(NO₃)₂ is hard to get: **K₂CO₃ (~43 %)**, just below the range and easy to buy (baking supplies), or **MgCl₂ (~33 %)**, the bath flakes. It's further out of range but very temperature-stable.
+
+#### T2 notes: magnesium nitrate
+
+| Temperature | Equilibrium RH (Greenspan 1977) |
+|-------------|---------------------------------|
+| 15 °C | 55.87 % ± 0.27 |
+| 20 °C | 54.38 % ± 0.23 |
+| 25 °C | 52.89 % ± 0.22 |
+| 30 °C | 51.40 % ± 0.24 |
+
+- **Much more temperature-sensitive than NaCl:** about −0.3 points per °C, compared with −0.04 for NaCl. Record the enclosure temperature carefully and use the settled-window mean `T` for `R`. A 1 °C error in `T` gives ~0.3 points of reference error.
+- Usually sold as the hexahydrate (fertiliser grade is fine). It is an oxidiser: keep it away from flammables and don't heat it. Make the slurry the same way as for NaCl (damp, with undissolved crystals).
+- Use the same jar, desk location, and Sonoff placement as T1 so the two points are comparable. Allow 24–36 h; T1 took ~10 h to reach its final step.
+- Analysis: with errors `e₁` (NaCl, −0.6) and `e₂` (Mg(NO₃)₂), the Sonoff's own correction is the line through the two points. If `e₂` ≈ `e₁` (within U), it's an offset only and the DHT22 correction stands. If not, chain the Sonoff line into the DHT22 correction to get a new slope and intercept.
+- Unlike table salt, both need buying. Other salts may settle more slowly than NaCl. T1 took ~10 h to reach its final step in this jar, so allow 24–36 h.
 
 ---
 
