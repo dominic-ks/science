@@ -39,7 +39,7 @@ That correction is only as good as the Sonoff. Nothing yet links the Sonoff to a
 
 | Phase | Status | Purpose |
 |-------|--------|---------|
-| [Sonoff Salt Check](./sonoff-salt-check/README.md) | Planned (setup ready) | Check the Sonoff against saturated table salt (~75.3 % RH) and decide whether the DHT22 correction needs adjusting |
+| [Sonoff Salt Check](./sonoff-salt-check/README.md) | T1 done (provisional) | Check the Sonoff against saturated table salt (~75.3 % RH) and decide whether the DHT22 correction needs adjusting |
 
 ---
 

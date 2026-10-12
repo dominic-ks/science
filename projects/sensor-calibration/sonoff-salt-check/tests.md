@@ -6,7 +6,7 @@ This file records the saturated-salt test of the Sonoff SNZB-02D and the resulti
 
 ## Summary
 
-**T1 in progress (sealed 2026-10-11 13:21 BST).** Interim: the Sonoff has read 73.8 % since 16:53 BST, about 1.6 points under the ~75.4 % reference, which is inside the ±3 hypothesis band. Final reading due when the jar is opened.
+**T1 result (provisional until the slurry is checked on opening):** after ~20 h sealed, the Sonoff read **74.8 %** against a **75.4 %** reference at 21.0 °C. Error **−0.6 ± 1.9 points**. The hypothesis (within ±3) is supported, and the error can't be told apart from zero. **Keep the current DHT22 correction.**
 
 T1 places the Sonoff in a sealed enclosure over saturated NaCl overnight. It compares the settled reading with the ~75.4 % reference and uses the error to keep or adjust the DHT22 correction.
 
@@ -68,6 +68,7 @@ Record times in local time (BST until 2026-10-25). **BigQuery `datetime` values 
 | Check | 13:24 | 12:24 | 71 % (photo; decimal not legible) | | | |
 | Check | ~14:22 onwards | ~13:22 onwards | 72.8 % "most of the day" (anecdotal) | | | |
 | Check | ~19:30 | ~18:30 | 73.8 % | | 21.4 °C (Sonoff, BigQuery) | |
+| Check | ~09:20 (2026-10-12) | ~08:20 | 74.8 % | | 21.0 °C (Sonoff, BigQuery) | Unchanged from the last BigQuery step at 23:45 BST |
 | Just before opening | | | | | | |
 | Container opened | | | | | | |
 
@@ -87,7 +88,11 @@ Observations (reference by event, e.g. "sealed: condensation on lid"):
 - Enclosure temperature (Sonoff, BigQuery): 22.4 °C at seal, falling to 21.4 °C by 18:03 UTC, then rising to 22.4 °C (19:37) and 23.0 °C (20:37).
 - The LCD and BigQuery agree at both photographed times.
 
-Interim interpretation (2026-10-11 ~22:00 BST; observations above, conclusion in **Result**):
+- Overnight (BigQuery, UTC): 73.8 until 22:32, then **74.8 from 22:45:47** to the latest report at 07:41:51 (19 reports over ~9 h). Temperature fell from 23.4 °C (21:36) to 21.0 °C (05:29) and stayed at 21.0 °C after that.
+- Time between 1-point steps after sealing: 71.8 → 72.8 in 1.0 h, → 73.8 in 2.5 h, → 74.8 in 6.9 h. No further step in the ~9.6 h since.
+- LCD at ~09:20 BST on 2026-10-12: 74.8 %.
+
+Interim interpretation (2026-10-11 ~22:00 BST, kept for the record; observations above, conclusion in **Result**):
 
 - Most of the rise happened in the first 3.5 h. Since then the reading has stayed within the same 1-point reporting step, so BigQuery can't show whether it is still creeping up. The LCD (0.1 resolution) can.
 - The wooden stand is wrapped in cling film, so it shouldn't absorb much moisture or slow settling much.
@@ -174,29 +179,53 @@ Caveat: a single point cannot tell an offset from a gain error. If the Sonoff's 
 
 ## Result
 
-**Result:** [TBC — after run]
+**Result:** Sonoff error at the NaCl point **e = −0.6 points** (reads slightly low), expanded uncertainty **U ≈ 1.9 points**. Provisional until validity check 1 (undissolved salt) is confirmed on opening.
 
 | Quantity | Value |
 |----------|-------|
-| Seal → open (UTC) | |
-| Settled window (UTC) | |
-| Enclosure temperature `T` | |
-| Reference `R` | |
-| Settled reading `S` (BigQuery TW mean) | |
-| Sonoff LCD at end | |
-| Error `e` | |
-| Expanded uncertainty `U` | |
+| Seal → open (UTC) | 2026-10-11 12:21 → [TBC — opening time] |
+| Settled window (UTC) | 2026-10-12 05:29 → 07:42 (final 2 h of reports before the LCD reading) |
+| Enclosure temperature `T` | 21.0 °C (constant over the settled window) |
+| Reference `R` | 75.43 % at 21.0 °C (Greenspan, interpolated) → 75.4 % |
+| Settled reading `S` (BigQuery TW mean) | 74.8 % (every report in the window is 74.8; ±1-point reporting step) |
+| Sonoff LCD at end | 74.8 % at ~09:20 BST, 2026-10-12 |
+| Error `e = S − R` | 74.8 − 75.4 = **−0.6** |
+| Expanded uncertainty `U` | **≈ 1.9** (budget below) |
+
+Uncertainty budget used (LCD reading, ± RH points):
+
+| Source | Value | Basis |
+|--------|-------|-------|
+| Reference value | 0.15 | Greenspan |
+| Reference temperature | 0.03 | `T` ± 1 °C × 0.036/°C |
+| Temperature gradient in jar | 0.9 | Planned allowance for ≤ 0.2 °C gradient. Not measured; temperature was flat at 21.0 °C, so this is probably conservative |
+| Incomplete settling | 0.2 | Steps were slowing (1.0 → 2.5 → 6.9 h) and none came in the next 9.6 h. The LCD matches the 74.8 step, but a small remaining creep can't be ruled out |
+| Display resolution | 0.05 | 0.1 % LCD digit |
+| Short-term noise | 0.1 | Single LCD reading; no finer data available |
+| **Combined u / expanded U = 2u** | **0.94 / 1.9** | |
+
+Validity conditions:
+
+| # | Condition | Status |
+|---|-----------|--------|
+| 1 | Undissolved salt visible at end | [TBC — check on opening] |
+| 2 | Settled (≤ 0.5 change between final 2-h windows, no trend) | ✅ The 74.8 step held for 9.6 h and the LCD agrees, so the change is below the reporting step and consistent with the LCD |
+| 3 | Temperature range ≤ 1 °C over the settled window | ✅ 21.0 °C throughout (21.0–21.2 °C since 02:30 UTC) |
+| 4 | Report in final 2 h, or LCD recorded | ✅ Both |
 
 **Observations:**
 
-- 
+- The reading took ~10.4 h after sealing to reach its final 1-point step (74.8 at 23:45 BST), much longer than the 2–3 h the setup notes implied.
+- The largest temperature swings (21.4 → 23.4 → 21.0 °C) happened in the evening and early night, before the settled window.
 
 **Conclusion:**
-[TBC]
+At ~75 % RH the Sonoff reads 0.6 points low, which is well inside both the ±3-point hypothesis and the ±1.9-point measurement uncertainty. The Sonoff is a sound reference at the top of the DHT22 correction's range. Its error there is too small to justify changing the correction. This test can't say whether the Sonoff is equally accurate at ~50 % (gain error); that needs a second reference point.
 
 **Issues to Carry Forward:**
 
-- 
+- Settling took ~10 h in this jar with a thin slurry. Future salt checks should allow ≥ 18–24 h, or use a larger slurry surface.
+- The gradient term (0.9) dominates the uncertainty and was assumed, not measured. A second temperature probe in the jar would narrow it.
+- A single NaCl point can't separate offset from gain. See T2 in [next-plan.md](./next-plan.md).
 
 **Decision Made After Test:**
-[TBC — keep / adjust; adjusted intercept if applicable]
+**Keep** `true RH ≈ 0.483 × DHT22 + 26.36`. |e| = 0.6 ≤ U = 1.9, so the first row of the decision rule applies. For reference only, the offset-adjusted alternative would be `0.483 × DHT22 + 26.96`. It is not adopted because the shift is smaller than its uncertainty.

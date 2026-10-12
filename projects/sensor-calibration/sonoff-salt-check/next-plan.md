@@ -17,18 +17,18 @@
 
 | Experiment | Goal | Priority |
 |------------|------|----------|
-| T2 — Second reference point: saturated MgCl₂ (~33 % RH) or K₂CO₃ (~43 % RH) | Separate an offset error from a gain (slope) error, so the DHT22 correction can be adjusted across its range and not just at 75 % | High if T1 gives \|e\| > U; otherwise medium |
+| T2 — Second reference point: saturated MgCl₂ (~33 % RH) or K₂CO₃ (~43 % RH) | Separate an offset error from a gain (slope) error, so the DHT22 correction can be adjusted across its range and not just at 75 % | **Medium.** T1 gave \|e\| = 0.6 < U = 1.9, so there is no evidence of a problem at 75 %, but gain error at ~50 % is still unchecked |
 | T3 — Repeat NaCl check | Detect Sonoff drift over time | Every 6–12 months, or after any suspicious reading |
 | T4 — DHT22 directly over salt (if it can be removed from the home Pi) | Check the DHT22 against the physical reference directly, without going through the Sonoff | Low; only if the DHT22 can be moved without disturbing the long-term setup |
 
 ### Second Reference Point: Is It Worth It?
 
-Probably yes, but only once T1 is done:
+Probably yes. T1 found no significant error at 75 %, so this is about confirming the low end, not fixing a known problem:
 
 - The correction was fitted over Sonoff readings of **~51–71 %** (5th–95th percentile, Oct 2025 – May 2026). NaCl at 75 % sits just above that range, so T1 checks the top end only.
 - A gain error can't be ruled out with one point. A second point lets the Sonoff's own two-point correction (`true = a × Sonoff + b`) be chained into the DHT22 correction.
 - **K₂CO₃ (~43 %)** sits nearer the bottom of the fitted range than MgCl₂ (~33 %), so a gain error in the range that matters shows up less extrapolated. MgCl₂ spans a wider range and is more temperature-stable, and is easier to buy (bath flakes). Either works. [TBC — pick based on availability]
-- Unlike table salt, both need buying. MgCl₂ settles more slowly; allow 24 h.
+- Unlike table salt, both need buying. MgCl₂ settles more slowly. T1's NaCl took ~10 h to reach its final step in this jar, so allow 24–36 h.
 
 ---
 

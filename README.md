@@ -13,7 +13,7 @@ The purpose is not just to store finished results. Each project should preserve 
 | [Onyx](./projects/onyx/README.md) | Active measurement / planning | Small remote-controlled submarine project, currently using V1 to answer buoyancy and ballast questions before V2 |
 | [Disposable dehumidifiers](./projects/disposable-dehumidifiers/README.md) | Planning / baseline setup | Household condensation monitoring study using a Pi Zero, DHT22, and weather data |
 | [Air Portsmouth](./projects/air-portsmouth/README.md) | Exploratory hardware / documentation | Low-cost, exploratory air quality monitoring project combining public AQ data with locally-built sensors to fill spatial gaps |
-| [Sensor calibration](./projects/sensor-calibration/README.md) | Planned (setup ready) | Checking low-cost humidity sensors against physical references; first check is the Sonoff SNZB-02D over saturated salt, which anchors the home Pi DHT22 correction |
+| [Sensor calibration](./projects/sensor-calibration/README.md) | Active | Checking low-cost humidity sensors against physical references; first check is the Sonoff SNZB-02D over saturated salt, which anchors the home Pi DHT22 correction |
 
 ---
 

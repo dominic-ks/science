@@ -18,18 +18,18 @@ The Sonoff reads within ±3 points of the saturated-salt reference in a sealed e
 
 | # | Objective | Status |
 |---|-----------|--------|
-| 1 | Prepare a sealed saturated-salt enclosure and confirm the Sonoff reports from inside it | Planned |
-| 2 | Hold the Sonoff in the enclosure overnight and record start/end times and room conditions | Planned |
-| 3 | Extract the settled Sonoff reading from BigQuery (and the on-device display) | Planned |
-| 4 | Calculate the Sonoff error against the reference with an uncertainty budget | Planned |
-| 5 | Keep or adjust the DHT22 calibration based on the decision rule in [tests.md](./tests.md) | Planned |
-| 6 | Decide on a repeat interval and whether a second reference point is worth adding | Planned |
+| 1 | Prepare a sealed saturated-salt enclosure and confirm the Sonoff reports from inside it | ✅ Glass clip-top jar; Zigbee worked through the glass |
+| 2 | Hold the Sonoff in the enclosure overnight and record start/end times and room conditions | ✅ Sealed 2026-10-11 13:21 BST, ~20 h |
+| 3 | Extract the settled Sonoff reading from BigQuery (and the on-device display) | ✅ 74.8 % (LCD and BigQuery agree) |
+| 4 | Calculate the Sonoff error against the reference with an uncertainty budget | ✅ e = −0.6 ± 1.9 points |
+| 5 | Keep or adjust the DHT22 calibration based on the decision rule in [tests.md](./tests.md) | ✅ Keep; error smaller than its uncertainty |
+| 6 | Decide on a repeat interval and whether a second reference point is worth adding | ⚠️ See next-plan.md; T2 now medium priority |
 
 ---
 
 ## Current Status
 
-Setup and analysis method are written. The physical test has not been run yet.
+**T1 run 2026-10-11/12.** The Sonoff read 74.8 % against a 75.4 % reference: −0.6 ± 1.9 points. The hypothesis is supported, and the DHT22 correction stays as it is. Provisional only until the slurry is confirmed to still have undissolved crystals on opening. Full record in [tests.md](./tests.md#result).
 
 Pre-test data check (2026-10-09):
 
