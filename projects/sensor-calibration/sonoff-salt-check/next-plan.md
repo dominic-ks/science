@@ -43,7 +43,7 @@ Probably yes. T1 found no significant error at 75 %, so this is about confirming
 - Usually sold as the hexahydrate (fertiliser grade is fine). It is an oxidiser: keep it away from flammables and don't heat it. Make the slurry the same way as for NaCl (damp, with undissolved crystals).
 - Use the same jar, desk location, and Sonoff placement as T1 so the two points are comparable. Allow 24–36 h; T1 took ~10 h to reach its final step.
 - Analysis: with errors `e₁` (NaCl, −0.6) and `e₂` (Mg(NO₃)₂), the Sonoff's own correction is the line through the two points. If `e₂` ≈ `e₁` (within U), it's an offset only and the DHT22 correction stands. If not, chain the Sonoff line into the DHT22 correction to get a new slope and intercept.
-- Unlike table salt, both need buying. Other salts may settle more slowly than NaCl. T1 took ~10 h to reach its final step in this jar, so allow 24–36 h.
+- Unlike table salt, all three need buying. Other salts may settle more slowly than NaCl. T1 took ~10 h to reach its final step in this jar, so allow 24–36 h.
 
 ---
 
