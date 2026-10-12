@@ -64,7 +64,7 @@ Record times in local time (BST until 2026-10-25). **BigQuery `datetime` values 
 
 | Event | Local time | UTC | Sonoff LCD RH | Sonoff LCD temp | Room temp | Notes |
 |-------|------------|-----|---------------|-----------------|-----------|-------|
-| Container sealed | 13:21 | 12:21 | 69.7 % (photo) | [TBC — not legible in photo] | ~22.4 °C (Sonoff, BigQuery) | Glass clip-top jar. Sonoff on a wooden block over a saucer of salt slurry |
+| Container sealed | 13:21 | 12:21 | 69.7 % (photo) | [TBC — not legible in photo] | ~22.4 °C (Sonoff, BigQuery) | Glass clip-top jar. Sonoff on a wooden block over a saucer of salt slurry. Photographed on the kitchen counter, then moved to the desk, away from the window, for the run [TBC — time moved] |
 | Check | 13:24 | 12:24 | 71 % (photo; decimal not legible) | | | |
 | Check | ~14:22 onwards | ~13:22 onwards | 72.8 % "most of the day" (anecdotal) | | | |
 | Check | ~19:30 | ~18:30 | 73.8 % | | 21.4 °C (Sonoff, BigQuery) | |
