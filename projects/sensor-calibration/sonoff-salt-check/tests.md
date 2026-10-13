@@ -6,7 +6,7 @@ This file records the saturated-salt test of the Sonoff SNZB-02D and the resulti
 
 ## Summary
 
-**T1 result (provisional until the slurry is checked on opening):** after ~20 h sealed, the Sonoff read **74.8 %** against a **75.4 %** reference at 21.0 °C. Error **−0.6 ± 1.9 points**. The hypothesis (within ±3) is supported, and the error can't be told apart from zero. **Keep the current DHT22 correction.**
+**T1 result (final):** after ~20 h sealed, the Sonoff read **74.8 %** against a **75.4 %** reference at 21.0 °C. Error **−0.6 ± 1.9 points**. The hypothesis (within ±3) is supported, and the error can't be told apart from zero. **Keep the current DHT22 correction.**
 
 T1 places the Sonoff in a sealed enclosure over saturated NaCl overnight. It compares the settled reading with the ~75.4 % reference and uses the error to keep or adjust the DHT22 correction.
 
@@ -71,7 +71,7 @@ Record times in local time (BST until 2026-10-25). **BigQuery `datetime` values 
 | Check | ~09:20 (2026-10-12) | ~08:20 | 74.8 % | | 21.0 °C (Sonoff, BigQuery) | Unchanged from the last BigQuery step at 23:45 BST |
 | Check | morning 2026-10-13 | | "Generally settled on 74.8 %"; dipped to 73.8 % for a while on 2026-10-12, thought to coincide with higher midday temperature | | 21.2 °C at 07:58 UTC (Sonoff, BigQuery) | Run extended for the day and a second night |
 | Just before opening | 09:30 | 08:30 | [not recorded] — last BigQuery report 74.8 % at 08:30:56 UTC | | 21.2 °C (Sonoff, BigQuery) | |
-| Container opened | 09:40 (2026-10-13) | 08:40 | | | | Sealed for ~44 h 19 min. Slurry crystals: [TBC] |
+| Container opened | 09:40 (2026-10-13) | 08:40 | | | | Sealed for ~44 h 19 min. Plenty of undissolved crystals in the slurry |
 
 Observations (reference by event, e.g. "sealed: condensation on lid"):
 
@@ -189,7 +189,7 @@ Caveat: a single point cannot tell an offset from a gain error. If the Sonoff's 
 
 ## Result
 
-**Result:** Sonoff error at the NaCl point **e = −0.6 points** (reads slightly low), expanded uncertainty **U ≈ 1.9 points**. Repeated on a second night (2026-10-13) with the same value. Provisional until validity check 1 (undissolved salt) is confirmed on opening.
+**Result:** Sonoff error at the NaCl point **e = −0.6 points** (reads slightly low), expanded uncertainty **U ≈ 1.9 points**. Repeated on a second night (2026-10-13) with the same value.
 
 | Quantity | Value |
 |----------|-------|
@@ -218,7 +218,7 @@ Validity conditions:
 
 | # | Condition | Status |
 |---|-----------|--------|
-| 1 | Undissolved salt visible at end | [TBC — check on opening] |
+| 1 | Undissolved salt visible at end | ✅ Plenty of undissolved crystals on opening (2026-10-13 09:40 BST) |
 | 2 | Settled (≤ 0.5 change between final 2-h windows, no trend) | ✅ The 74.8 step held for 9.6 h and the LCD agrees, so the change is below the reporting step and consistent with the LCD |
 | 3 | Temperature range ≤ 1 °C over the settled window | ✅ 21.0 °C throughout (21.0–21.2 °C since 02:30 UTC) |
 | 4 | Report in final 2 h, or LCD recorded | ✅ Both |

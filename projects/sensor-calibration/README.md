@@ -39,12 +39,12 @@ That correction is only as good as the Sonoff. Nothing yet links the Sonoff to a
 
 | Phase | Status | Purpose |
 |-------|--------|---------|
-| [Sonoff Salt Check](./sonoff-salt-check/README.md) | T1 done (provisional) | Check the Sonoff against saturated table salt (~75.3 % RH) and decide whether the DHT22 correction needs adjusting |
+| [Sonoff Salt Check](./sonoff-salt-check/README.md) | T1 complete | Check the Sonoff against saturated table salt (~75.3 % RH) and decide whether the DHT22 correction needs adjusting |
 
 ---
 
 ## Current Direction
 
-- Run the saturated-salt check on the Sonoff overnight.
-- Use the result to keep or adjust the DHT22 correction.
-- Decide whether a second reference point and a repeat schedule are worth setting up. See [next-plan.md](./sonoff-salt-check/next-plan.md).
+- T1 complete (2026-10-13): the Sonoff reads −0.6 ± 1.9 points at the NaCl point (~75 %), so the DHT22 correction is kept.
+- Next: T2, a second reference point with magnesium nitrate (~54 %), to check for gain error inside the correction's range. See [next-plan.md](./sonoff-salt-check/next-plan.md).
+- Repeat the NaCl check every 6–12 months to catch Sonoff drift.
