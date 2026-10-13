@@ -26,9 +26,9 @@ The reference value itself is not the main source of error. Most of the error co
 | Item | Detail |
 |------|--------|
 | Sensor under test | Sonoff SNZB-02D |
-| Enclosure | Airtight food container with a gasket lid. Clear, if possible, so the Sonoff's LCD can be read without opening it. [TBC — container type and approximate volume] |
-| Salt | Plain table salt (NaCl). Iodised or anti-caking additives have a negligible effect at these quantities. [TBC — brand / type used] |
-| Water | Tap or distilled. [TBC — which] |
+| Enclosure | Airtight food container with a gasket lid. Clear, if possible, so the Sonoff's LCD can be read without opening it. **T1:** glass clip-top jar with a rubber seal. Volume not measured; it looks like roughly a 1 L jar in the photos (estimate). To measure, fill it with water from a measuring jug before T2. |
+| Salt | Plain table salt (NaCl). Iodised or anti-caking additives have a negligible effect at these quantities. **T1:** two heaped tablespoons of table salt (brand not recorded). |
+| Water | Tap or distilled. **T1:** tap water. |
 | Dish | Small open dish or lid for the slurry |
 | Stand | Something to hold the Sonoff above the slurry so it can't get wet (e.g. an upturned cup) |
 
