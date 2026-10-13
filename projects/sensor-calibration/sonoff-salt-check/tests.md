@@ -16,7 +16,7 @@ T1 places the Sonoff in a sealed enclosure over saturated NaCl overnight. It com
 
 ### T1 — Sonoff vs Saturated NaCl, Overnight
 
-**Date:** 2026-10-11 13:21 BST (sealed) → [TBC — opening time]
+**Date:** 2026-10-11 13:21 BST (sealed) → 2026-10-13 09:40 BST (opened)
 
 **Goal:**
 Measure the Sonoff's humidity error at ~75 % RH against a saturated-salt reference, and decide whether the DHT22 correction (`true RH ≈ 0.483 × DHT22 + 26.36`) needs adjusting.
@@ -70,8 +70,8 @@ Record times in local time (BST until 2026-10-25). **BigQuery `datetime` values 
 | Check | ~19:30 | ~18:30 | 73.8 % | | 21.4 °C (Sonoff, BigQuery) | |
 | Check | ~09:20 (2026-10-12) | ~08:20 | 74.8 % | | 21.0 °C (Sonoff, BigQuery) | Unchanged from the last BigQuery step at 23:45 BST |
 | Check | morning 2026-10-13 | | "Generally settled on 74.8 %"; dipped to 73.8 % for a while on 2026-10-12, thought to coincide with higher midday temperature | | 21.2 °C at 07:58 UTC (Sonoff, BigQuery) | Run extended for the day and a second night |
-| Just before opening | | | | | | |
-| Container opened | | | | | | |
+| Just before opening | 09:30 | 08:30 | [not recorded] — last BigQuery report 74.8 % at 08:30:56 UTC | | 21.2 °C (Sonoff, BigQuery) | |
+| Container opened | 09:40 (2026-10-13) | 08:40 | | | | Sealed for ~44 h 19 min. Slurry crystals: [TBC] |
 
 Observations (reference by event, e.g. "sealed: condensation on lid"):
 
@@ -193,7 +193,7 @@ Caveat: a single point cannot tell an offset from a gain error. If the Sonoff's 
 
 | Quantity | Value |
 |----------|-------|
-| Seal → open (UTC) | 2026-10-11 12:21 → [TBC — opening time] |
+| Seal → open (UTC) | 2026-10-11 12:21 → 2026-10-13 08:40 (~44.3 h) |
 | Settled window (UTC) | 2026-10-12 05:29 → 07:42 (final 2 h of reports before the LCD reading) |
 | Enclosure temperature `T` | 21.0 °C (constant over the settled window) |
 | Reference `R` | 75.43 % at 21.0 °C (Greenspan, interpolated) → 75.4 % |
