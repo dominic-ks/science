@@ -26,7 +26,7 @@ The reference value itself is not the main source of error. Most of the error co
 | Item | Detail |
 |------|--------|
 | Sensor under test | Sonoff SNZB-02D |
-| Enclosure | Airtight food container with a gasket lid. Clear, if possible, so the Sonoff's LCD can be read without opening it. **T1:** glass clip-top jar with a rubber seal. Volume not measured; it looks like roughly a 1 L jar in the photos (estimate). To measure, fill it with water from a measuring jug before T2. |
+| Enclosure | Airtight food container with a gasket lid. Clear, if possible, so the Sonoff's LCD can be read without opening it. **T1:** glass clip-top jar with a rubber seal. Volume 1682 cm³ (measured 2026-10-30 with a 1 L jug: one full jug, then 682 cm³ from a second, with 318 cm³ left over). This is the full internal volume; the air space in T1 was a little less because of the sensor, block, and saucer. |
 | Salt | Plain table salt (NaCl). Iodised or anti-caking additives have a negligible effect at these quantities. **T1:** two heaped tablespoons of table salt (brand not recorded). |
 | Water | Tap or distilled. **T1:** tap water. |
 | Dish | Small open dish or lid for the slurry |
